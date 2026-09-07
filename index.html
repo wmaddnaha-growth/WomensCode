@@ -1,0 +1,1842 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مانيوال المايسترو - الكتالوج التشغيلي للرجل الشرقي (+18)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '2204793433653923');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=2204793433653923&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Microsoft Clarity Code -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "xff8setg4h");
+    </script>
+    <!-- End Microsoft Clarity Code -->
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#f8fafc',
+                            text: '#0f172a',
+                            primary: '#b91c1c',
+                            darkPrimary: '#991b1b',
+                            gold: '#d97706',
+                            darkGold: '#b45309',
+                            card: '#ffffff',
+                            light: '#fee2e2'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+            scroll-behavior: smooth;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(185, 28, 28, 0.18);
+            box-shadow: 0 10px 40px -10px rgba(185, 28, 28, 0.08);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to left, #b91c1c, #d97706);
+        }
+        .btn-glow {
+            box-shadow: 0 4px 18px rgba(185, 28, 28, 0.35);
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 6px 25px rgba(185, 28, 28, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .book-container {
+            perspective: 1000px;
+        }
+        .book {
+            width: 240px;
+            height: 340px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(-20deg);
+            transition: transform 0.5s ease;
+            box-shadow: -15px 15px 30px rgba(0,0,0,0.18);
+        }
+        .book:hover {
+            transform: rotateY(0deg) scale(1.05);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid #cbd5e1;
+            background-color: #ffffff;
+            color: #0f172a;
+            transition: all 0.2s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #b91c1c;
+            box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.15);
+            background-color: #ffffff;
+        }
+        
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #0f172a;
+            color: #fff;
+            border: 1px solid #b91c1c;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 100;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 15px;
+            transition: visibility 0s, opacity 0.5s linear;
+            opacity: 0;
+        }
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .swiper {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 55px;
+            overflow: visible;
+        }
+        
+        .swiper-slide {
+            width: 88vw;
+            max-width: 350px;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            border-radius: 1.25rem;
+            border: 2px solid rgba(185, 28, 28, 0.15);
+            box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.1);
+            
+            opacity: 0.65; 
+            transform: scale(0.96);
+            transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            transform-origin: center center;
+            overflow: hidden;
+            user-select: none;
+            cursor: pointer;
+            height: auto;
+        }
+        
+        @media (min-width: 640px) {
+            .swiper-slide {
+                width: 420px;
+                max-width: 420px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .swiper-slide {
+                width: 520px;
+                max-width: 520px;
+            }
+        }
+        
+        .swiper-slide-active {
+            opacity: 1;
+            transform: scale(1);
+            border: 3px solid #b91c1c;
+            box-shadow: 0 20px 45px -10px rgba(185, 28, 28, 0.35);
+            z-index: 10;
+        }
+        
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            border-radius: 0.85rem;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: #b91c1c !important;
+            width: 24px !important;
+            border-radius: 12px !important;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-red-700 selection:text-white pb-20 md:pb-0 bg-slate-50 text-slate-900">
+
+    <!-- Top Alert Bar -->
+    <div class="bg-red-900 text-white text-center py-2.5 px-4 text-sm md:text-base font-bold tracking-wide shadow-md relative z-20">
+        🚨 تنبيه مهم: المحتوى ده جريء جداً (+18) ومخصص للمتزوجين فقط.
+    </div>
+
+    <!-- 1) HERO SECTION (واجهة الصفحة) -->
+    <header class="relative pt-12 pb-20 overflow-hidden bg-gradient-to-b from-slate-100 via-white to-red-50/40 border-b border-slate-200">
+        <div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-red-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow"></div>
+        <div class="absolute bottom-[-10%] left-[-5%] w-72 h-72 bg-amber-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                
+                <!-- Hero Main Text Block -->
+                <div class="w-full text-center lg:text-right order-1">
+                    <!-- 1. Question / Hook Headline -->
+                    <p class="text-xl sm:text-2xl lg:text-3xl font-black mb-3 leading-snug text-red-700">
+                        الانتصاب بيخونك في النص؟ بتخلص بسرعة؟ ومراتك دايماً "تعبانة وبتتهرب"؟
+                    </p>
+
+                    <!-- 2. Main Book Title (Large & Clear H1) -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-3 leading-tight text-slate-900">
+                        كتاب شفرة الستات
+                    </h1>
+                    
+                    <!-- 3. Tag Badge -->
+                    <div class="mb-4">
+                        <span class="inline-block py-1.5 px-4 rounded-full bg-red-100 text-red-800 border border-red-200 text-sm sm:text-base font-extrabold shadow-xs">
+                            الدليل الاجرأ للرجل المصري لاسعاد الزوجة 🛠️
+                        </span>
+                    </div>
+
+                    <!-- 4. Sub-headline -->
+                    <p class="text-base sm:text-lg lg:text-xl font-medium text-slate-800 leading-relaxed mb-6">
+                        الكتالوج العملي لاسترداد <span class="font-black text-red-700">صلابته</span> في العلاقة و<span class="font-black text-red-700">فك التوتر</span> عندكم ، مع الخريطة التشريحية لزوجتك عشان توصلها لـ <span class="font-black text-red-700">الرعشة والنافورة في ثواني</span> .. من <span class="font-black text-red-700">غير أدوية</span>.
+                    </p>
+                    
+                    <!-- PDF Note Badge -->
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-amber-300 shadow-sm text-xs md:text-sm font-bold text-slate-800 mb-6">
+                        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </span>
+                        <span>مانيوال إلكتروني (PDF) - تفتحه وتقرأ منه من موبايلك بمنتهى الخصوصية والراحة</span>
+                    </div>
+
+                    <!-- Book Cover Mockup (Mobile Inline View) -->
+                    <div class="w-full flex flex-col items-center justify-center my-6 lg:hidden relative">
+                        <div class="animate-float relative w-60 sm:w-72">
+                            <img src="images/book-cover.jpg" alt="غلاف كتاب شفرة الستات" class="w-full h-auto rounded-lg shadow-2xl border-2 border-red-200 cursor-pointer hover:scale-102 transition-transform" onclick="openImageModal(this.src, this.alt)" onerror="this.src='https://placehold.co/400x600/b91c1c/ffffff?text=+18+كتاب+شفرة+الستات'">
+                            
+                            <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 z-20">
+                                <span class="bg-red-700 text-white font-black text-xs sm:text-sm px-4 py-1.5 rounded-full border-2 border-amber-400 shadow-lg animate-pulse flex items-center gap-1.5 whitespace-nowrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-amber-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                                    للرجال فقط +18
+                                </span>
+                            </div>
+
+                            <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-5/6 h-6 bg-black/15 blur-xl rounded-[100%]"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Benefits List Title -->
+                    <h3 class="text-lg sm:text-xl font-black text-slate-900 mb-4 text-right flex items-center justify-center lg:justify-start gap-2">
+                        <span>🔥 إيه أهم المهارات والتكنيكات اللي هتكتشفها جوة الكتاب؟</span>
+                    </h3>
+                    
+                    <!-- Bullet Points (Benefits) -->
+                    <ul class="text-base md:text-lg mb-8 space-y-4 text-right w-full">
+                        <li class="flex items-start gap-3 text-slate-700">
+                            <span class="shrink-0 mt-0.5 text-xl">🗺️</span>
+                            <p class="leading-relaxed"><span class="font-bold text-red-700">خريطة الأزرار المخفية:</span> الدليل الصريح للوصول للبظر والـ G-Spot وتفجير هزة الجماع العنيفة ( السكويرت - النافورة ).</p>
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-700">
+                            <span class="shrink-0 mt-0.5 text-xl">📅</span>
+                            <p class="leading-relaxed"><span class="font-bold text-red-700">فهم دورتها الشهرية وتغيراتها:</span> فهم تغيرات احتياجاتها الجنسية أثناء الأوقات المختلفة من الشهر ومعرفة كيفية التعامل معها نفسياً وجنسياً في أيام الذروة.</p>
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-700">
+                            <span class="shrink-0 mt-0.5 text-xl">🗣️</span>
+                            <p class="leading-relaxed"><span class="font-bold text-red-700">شفرة الآهات:</span> إزاي تفهم أنفاسها وقت العلاقة وتتحكم في سرعتك بناءً عليها.</p>
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-700">
+                            <span class="shrink-0 mt-0.5 text-xl">💃</span>
+                            <p class="leading-relaxed"><span class="font-bold text-red-700">لغة وسطها المتمرد:</span> إزاي تفهم حركة حوضها و تتزامن معاها وقت الإيلاج لمتعة مضاعفة.</p>
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-700">
+                            <span class="shrink-0 mt-0.5 text-xl">⏱️</span>
+                            <p class="leading-relaxed"><span class="font-bold text-red-700">تحكم فولاذي:</span> إزاي تطول العلاقة لـ 23 دقيقة وتقذف بمزاجك بتمارين عضلات الحوض والـ Start-Stop.</p>
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-700">
+                            <span class="shrink-0 mt-0.5 text-xl">🔥</span>
+                            <p class="leading-relaxed"><span class="font-bold text-red-700">الإثارة المضمونة:</span> اللمسات الجريئة اللي بتمسح التوتر والبرود وتخلي مراتك هي اللي تترجاك تبدأ.</p>
+                        </li>
+                    </ul>
+
+                    <!-- Trust Anchors Box -->
+                    <div class="mb-8 p-3.5 bg-slate-100 rounded-xl border border-slate-200 flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs md:text-sm font-bold text-slate-800">
+                        <span class="flex items-center gap-1.5"><span class="text-emerald-600 font-extrabold">✓</span> علمي وعملي 100%</span>
+                        <span class="text-slate-300">|</span>
+                        <span class="flex items-center gap-1.5"><span class="text-emerald-600 font-extrabold">✓</span> طبيعي بدون حبوب</span>
+                        <span class="text-slate-300">|</span>
+                        <span class="flex items-center gap-1.5"><span class="text-emerald-600 font-extrabold">✓</span> متصمم لعقلية وجسم الزوج الشرقي</span>
+                    </div>
+                    
+                    <!-- Decision Block (Price + CTA) -->
+                    <div>
+                        <div class="mb-4 flex justify-center lg:justify-start items-center gap-4">
+                            <span class="text-4xl font-black text-red-700">400 ج.م</span>
+                            <span class="text-xl text-gray-400 line-through font-bold">2,550 ج.م</span>
+                            <span class="bg-red-100 text-red-800 text-sm font-bold px-3 py-1 rounded-full border border-red-200">عرض اليوم فقط</span>
+                        </div>
+
+                        <div class="flex justify-center lg:justify-start">
+                            <button onclick="scrollToCheckout()" class="w-full sm:w-auto bg-gradient-to-r from-red-700 via-red-600 to-amber-600 hover:from-red-800 hover:to-amber-700 text-white font-black text-xl py-4 px-10 rounded-2xl btn-glow flex items-center justify-center gap-2">
+                                🔥 هات نسختي دلوقتي (400 جنيه بدل 2550 جنيه)
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                            </button>
+                        </div>
+                        
+                        <div class="mt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 text-sm text-slate-600 font-medium">
+                            <div class="flex items-center gap-1.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                استلام فوري واتساب وإيميل
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                خصوصية وأمان 100%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image Block -->
+                <div class="w-full flex flex-col items-center justify-center my-6 lg:my-0 order-2 relative">
+                    <div class="animate-float relative w-64 md:w-80">
+                        <img src="images/book-cover.jpg" alt="غلاف كتاب شفرة الستات" class="w-full h-auto rounded-lg shadow-2xl border-2 border-red-200 cursor-pointer hover:scale-102 transition-transform" onclick="openImageModal(this.src, this.alt)" onerror="this.src='https://placehold.co/400x600/b91c1c/ffffff?text=+18+كتاب+شفرة+الستات'">
+                        
+                        <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 z-20">
+                            <span class="bg-red-700 text-white font-black text-sm md:text-base px-4 py-1.5 rounded-full border-2 border-amber-400 shadow-lg animate-pulse flex items-center gap-1.5 whitespace-nowrap">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                                للرجال فقط +18
+                            </span>
+                        </div>
+
+                        <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-5/6 h-6 bg-black/15 blur-xl rounded-[100%]"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- 2) PAIN SECTION (قسم الوجع الحقيقي) -->
+    <section class="py-16 bg-white relative overflow-hidden border-b border-slate-200">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="glass-panel p-8 md:p-10 rounded-3xl border-2 border-red-200 shadow-xl bg-white text-right relative">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-100 text-red-800 text-xs md:text-sm font-black mb-4 border border-red-200 shadow-xs">
+                    💔 الوجع الحقيقي
+                </div>
+
+                <h2 class="text-2xl md:text-3xl font-black mb-6 leading-relaxed text-slate-900">
+                    هل أوضة نومك قلبت لـ "روتين ممل" أو حمل تقيل عليك؟
+                </h2>
+
+                <div class="space-y-4 text-base md:text-lg text-slate-700 leading-relaxed font-medium">
+                    <p>
+                        إنت عارف الإحساس ده كويس: بتدخل الأوضة شايل هموم الشغل، تلاقيها هي كمان شايلة هم البيت والعيال. تقرب منها تلاقيها باردة ورافضة، ولو وافقت بتبقى قاعدة مستنياك تخلص عشان تنام.
+                    </p>
+
+                    <div class="p-5 bg-red-50 rounded-2xl border-r-4 border-red-700 my-6 shadow-xs">
+                        <h4 class="font-black text-red-800 text-lg mb-2">بس الوجع الحقيقي بيبدأ هنا:</h4>
+                        <p class="text-slate-800 leading-relaxed">
+                            لما يهاجمك <span class="font-bold text-red-700">"قلق الأداء"</span>. دماغك تشتغل في عز العلاقة: <em>"هعرف أبسطها؟ هخلص بسرعة وشكلي هيبقى وحش؟"</em>. التفكير ده بيفرز هرمونات بتقفل الدورة الدموية، والانتصاب بيضيع فجأة، أو بتقذف في أول دقيقتين. بتديها ضهرك وتنام مكسور، وهي بتسكت وتنام.
+                        </p>
+                    </div>
+
+                    <p class="font-bold text-slate-900 text-lg bg-amber-50 p-4 rounded-xl border border-amber-200">
+                        💡 إنت مش لوحدك. 90% من الرجالة فاكرين الحل في المقويات والحبوب، بينما المشكلة كلها في "طريقة التفكير" وجهلهم بخريطة متعة جسم الست.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3) STORY SECTION (القصة - من هنا وُلد الكتالوج) -->
+    <section class="py-16 bg-slate-100 relative overflow-hidden border-b border-slate-200">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="glass-panel p-8 md:p-10 rounded-3xl border-2 border-amber-300 shadow-xl bg-white text-right relative">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 text-amber-900 text-xs md:text-sm font-black mb-4 border border-amber-200 shadow-xs">
+                    💡 القصة - من هنا وُلد الكتالوج
+                </div>
+
+                <h2 class="text-2xl md:text-3xl font-black mb-6 leading-relaxed text-slate-900">
+                    كنت فاكر المشكلة فيا ومحتاج مقويات.. لحد ما فهمت إن الكارثة في طريقة أدائي.
+                </h2>
+
+                <div class="space-y-4 text-base md:text-lg text-slate-700 leading-relaxed font-medium">
+                    <p>
+                        إحنا كرجالة بنسخن بسرعة وبنبقى جاهزين للإيلاج في ثواني. بس نسينا إن الست محتاجة تهيئة نفسية وجسدية طويلة. لو دخلت عليها على طول تلمس مناطقها الحساسة وهي لسة متوترة ومضغوطة، جسمها بيقفل وبتحس بوجع بدل المتعة.
+                    </p>
+
+                    <div class="p-5 bg-gradient-to-r from-red-50 to-amber-50 rounded-2xl border border-red-200 my-6 shadow-sm">
+                        <p class="text-slate-900 font-bold text-lg leading-relaxed">
+                            من هنا كتبت الدليل ده. أنا مش ببيعلك كلام رومانسي، أنا بديك خطوات 1-2-3 عملية وتكنيكات صريحة (إزاي تلمس، إزاي تستخدم شفايفك ولسانك، وإزاي تفجر متعتها) عشان ترجعلك ثقتك وتبقى الراجل اللي هي بتتمناه كل ليلة.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4) WHAT'S INSIDE (ماذا ستجد داخل المانيوال؟) -->
+    <section class="py-20 relative bg-white border-b border-slate-200">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-16">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-red-100 text-red-800 text-sm font-bold mb-3 border border-red-200">
+                    📖 نظرة شمولية
+                </span>
+                <h2 class="text-3xl md:text-4xl font-black mb-4 text-slate-900">ماذا ستجد داخل مانيوال المايسترو؟</h2>
+                <p class="text-xl text-red-700 font-bold">ده كتاب عملي تطبق منه درس واحد كل ليلة:</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Chapter 0 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-700 transition-colors duration-300">
+                        <span class="text-3xl group-hover:scale-110 transition-transform">🛠️</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">الباب صفر (صلابة وتأخير)</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium">إزاي تمسح التوتر من دماغك، وتطول لـ 23 دقيقة بتكنيك الـ Start-Stop وتمارين كيجل لانتصاب قوي.</p>
+                </div>
+
+                <!-- Chapter 1 & 2 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-700 transition-colors duration-300">
+                        <span class="text-3xl group-hover:scale-110 transition-transform">🚫</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">الباب الأول والثاني (الاختراق النفسي)</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium">إزاي تفصل دماغ مراتك عن ضغوط اليوم بـ "مساج الأجداد" وتثير خيالها برسايل جريئة طول اليوم تخليها مستنياك.</p>
+                </div>
+
+                <!-- Chapter 3 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-700 transition-colors duration-300">
+                        <span class="text-3xl group-hover:scale-110 transition-transform">🗺️</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">الباب الثالث (التمهيد الجسدي)</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium">خريطة البظر وتفاصيله. 7 خطوات تسخين جسدي بتجهز منطقتها الحساسة لغاية ما تتوسل ليك عشان تدخل.</p>
+                </div>
+
+                <!-- Chapter 4 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-700 transition-colors duration-300">
+                        <span class="text-3xl group-hover:scale-110 transition-transform">👅</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">الباب الرابع (الأسلحة الفتاكة)</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium">الشغل العملي الجريء. تكنيكات الجنس الفموي زي "البانكيك" المفرود لمسح الأعصاب، و"الدوامة" (الشفط الدائري) لسحب وعيها بالكامل.</p>
+                </div>
+
+                <!-- Chapter 5 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-700 transition-colors duration-300">
+                        <span class="text-3xl group-hover:scale-110 transition-transform">🌋</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">الباب الخامس (النافورة والقمة)</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium">الدليل التشريحي للـ G-Spot وتكنيك "هزاز الدراع" لتفجير السكويرت، وإزاي تتزامن مع حركة حوضها وقت الإيلاج.</p>
+                </div>
+
+                <!-- Chapter 6 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-700 transition-colors duration-300">
+                        <span class="text-3xl group-hover:scale-110 transition-transform">🎭</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">الباب السادس (كسر الملل)</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium">لغة السرير الجريئة (Dirty Talk)، العنف اللذيذ الآمن، و3 ليالي لتبادل الأدوار (Roleplay).</p>
+                </div>
+            </div>
+
+            <div class="mt-10 flex justify-center">
+                <button onclick="scrollToCheckout()" class="w-full sm:w-auto bg-gradient-to-r from-red-700 via-red-600 to-amber-600 hover:from-red-800 hover:to-amber-700 text-white font-black text-xl py-4 px-10 rounded-2xl btn-glow flex items-center justify-center gap-2">
+                    أضف العرض بـ 400 جنيه الآن
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Swiper Index Section -->
+    <section class="py-16 bg-slate-50 relative overflow-hidden border-b border-slate-200">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-black mb-4 text-slate-900">📖 خد بصة من جوة... <span class="text-red-700">(فهرس الكتالوج)</span></h2>
+                <p class="text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+                    إحنا بنحب الصراحة والوضوح. قلب في فهرس "مانيوال المايسترو" واعرف الدروس والتكنيكات العملية اللي مستنياك جوة قبل ما تشتري.
+                </p>
+                <div class="mt-6 inline-flex items-center gap-2 bg-red-100 text-red-800 font-bold px-6 py-3 rounded-full animate-pulse shadow-xs border border-red-200 cursor-default">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
+                    <span>اسحب الصور شمال ويمين علشان تشوف فهرس الكتالوج كاملاً</span>
+                </div>
+            </div>
+
+            <!-- Swiper Container -->
+            <div class="swiper indexSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide cursor-pointer">
+                        <img src="images/index-1.jpg" alt="الفهرس 1" class="w-full h-auto block object-contain" loading="lazy">
+                    </div>
+                    <div class="swiper-slide cursor-pointer">
+                        <img src="images/index-2.jpg" alt="الفهرس 2" class="w-full h-auto block object-contain" loading="lazy">
+                    </div>
+                    <div class="swiper-slide cursor-pointer">
+                        <img src="images/index-3.jpg" alt="الفهرس 3" class="w-full h-auto block object-contain" loading="lazy">
+                    </div>
+                    <div class="swiper-slide cursor-pointer">
+                        <img src="images/index-4.jpg" alt="الفهرس 4" class="w-full h-auto block object-contain" loading="lazy">
+                    </div>
+                    <div class="swiper-slide cursor-pointer">
+                        <img src="images/index-5.jpg" alt="الفهرس 5" class="w-full h-auto block object-contain" loading="lazy">
+                    </div>
+                </div>
+                <div class="swiper-pagination mt-4"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Lessons Section -->
+    <section class="py-16 bg-white relative border-b border-slate-200 overflow-hidden">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-10">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-red-100 text-red-800 text-sm font-bold mb-3 border border-red-200">
+                    📖 عينة مجانية حقيقية من داخل المانيوال
+                </span>
+                <h2 class="text-3xl md:text-4xl font-black mb-4 text-slate-900">
+                    اقرأ عينة حقيقية من أول دروس الكتالوج 📜
+                </h2>
+                <p class="text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+                    علشان تتأكد إن الكتالوج عملي ومباشر وتستوعب أسلوب الشرح الهندسي والتكنيكات التطبيقية قبل الشراء، دي لقطات حية ومباشرة.
+                </p>
+            </div>
+
+            <div class="swiper lessonsSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide p-3">
+                        <div class="w-full overflow-hidden rounded-xl bg-gray-50 mb-3">
+                            <img src="images/1st lesson.png" alt="الدرس الأول من الكتاب" class="w-full h-auto object-contain" loading="lazy">
+                        </div>
+                        <div class="text-center p-2">
+                            <span class="bg-red-700 text-white font-bold text-xs px-3.5 py-1 rounded-full shadow-xs">الدرس الأول 📄</span>
+                            <h4 class="font-bold text-slate-900 text-base mt-2.5 mb-1">أسلوب الشرح الهندسي والمقدمة العملية</h4>
+                            <p class="text-xs text-gray-500 font-medium leading-relaxed">نموذج يوضح طريقة التبسيط والتطبيق الهندسي للماكينة الذكرية</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide p-3">
+                        <div class="w-full overflow-hidden rounded-xl bg-gray-50 mb-3">
+                            <img src="images/2nd lesson.png" alt="الدرس الثاني من الكتاب" class="w-full h-auto object-contain" loading="lazy">
+                        </div>
+                        <div class="text-center p-2">
+                            <span class="bg-red-700 text-white font-bold text-xs px-3.5 py-1 rounded-full shadow-xs">الدرس الثاني 📄</span>
+                            <h4 class="font-bold text-slate-900 text-base mt-2.5 mb-1">خطوات التنفيذ وتكنيكات التحكم</h4>
+                            <p class="text-xs text-gray-500 font-medium leading-relaxed">خطوات عملية مباشرة لتطوير الأداء وتأخير القذف بثقة</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof of Delivery Section -->
+    <section class="py-16 bg-slate-50 border-b border-slate-200 relative overflow-hidden">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-10">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-emerald-100 text-emerald-800 text-sm font-bold mb-3 border border-emerald-200">
+                    📦 رجال قبلك اشتروا ووصلهم المانيوال
+                </span>
+                <h2 class="text-3xl md:text-4xl font-black mb-4 text-slate-900">
+                    إثباتات الاستلام والتأكيدات 📖
+                </h2>
+                <p class="text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+                    شوف بنفسك إثباتات الاستلام على الواتساب والإيميل، ووضوح صفحات المانيوال وحجمه المناسب للقراءة من الموبايل بمنتهى السهولة والخصوصية.
+                </p>
+            </div>
+
+            <div class="swiper proofSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide p-3">
+                        <div class="w-full overflow-hidden rounded-xl bg-gray-50 mb-3">
+                            <img src="images/proofBook1.png" alt="إثبات استلام 1" class="w-full h-auto object-contain" loading="lazy">
+                        </div>
+                        <div class="text-center p-2">
+                            <h4 class="font-bold text-slate-900 text-base mb-1">تأكيد الاستلام والوضوح</h4>
+                            <p class="text-xs text-gray-500 font-medium">استلام فوري وتنسيق عالي الجودة للماكينة والمانيوال</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide p-3">
+                        <div class="w-full overflow-hidden rounded-xl bg-gray-50 mb-3">
+                            <img src="images/proofBook2.png" alt="إثبات استلام 2" class="w-full h-auto object-contain" loading="lazy">
+                        </div>
+                        <div class="text-center p-2">
+                            <h4 class="font-bold text-slate-900 text-base mb-1">سهولة القراءة من الموبايل</h4>
+                            <p class="text-xs text-gray-500 font-medium">خط واضح ومريح للعين بقرائية تامة وبمنتهى الخصوصية</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide p-3">
+                        <div class="w-full overflow-hidden rounded-xl bg-gray-50 mb-3">
+                            <img src="images/proofBook3.png" alt="إثبات استلام 3" class="w-full h-auto object-contain" loading="lazy">
+                        </div>
+                        <div class="text-center p-2">
+                            <h4 class="font-bold text-slate-900 text-base mb-1">سرعة الإرسال على الواتساب</h4>
+                            <p class="text-xs text-gray-500 font-medium">متابعة وتأكيدات فورية للعملاء بعد التحويل مباشرة</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide p-3">
+                        <div class="w-full overflow-hidden rounded-xl bg-gray-50 mb-3">
+                            <img src="images/proofBook4.png" alt="إثبات استلام 4" class="w-full h-auto object-contain" loading="lazy">
+                        </div>
+                        <div class="text-center p-2">
+                            <h4 class="font-bold text-slate-900 text-base mb-1">استلام النسخة الإلكترونية</h4>
+                            <p class="text-xs text-gray-500 font-medium">تأكيد إرسال رابط التحميل والإيميل في نفس اللحظة</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide p-3">
+                        <div class="w-full overflow-hidden rounded-xl bg-gray-50 mb-3">
+                            <img src="images/proofBook5.png" alt="إثبات استلام 5" class="w-full h-auto object-contain" loading="lazy">
+                        </div>
+                        <div class="text-center p-2">
+                            <h4 class="font-bold text-slate-900 text-base mb-1">شكل المانيوال والتنسيق</h4>
+                            <p class="text-xs text-gray-500 font-medium">استعراض واضح لصفحات المانيوال والمحتوى الداخلي</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide p-3">
+                        <div class="w-full overflow-hidden rounded-xl bg-gray-50 mb-3">
+                            <img src="images/proofBook6.png" alt="إثبات استلام 6" class="w-full h-auto object-contain" loading="lazy">
+                        </div>
+                        <div class="text-center p-2">
+                            <h4 class="font-bold text-slate-900 text-base mb-1">سرعة الرد والتأكيد</h4>
+                            <p class="text-xs text-gray-500 font-medium">رسائل واضحة ومباشرة لتأكيد الاستلام دون أي تأخير</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5) TRANSFORMATION SECTION (التحوّل النهائي) -->
+    <section class="py-16 bg-white relative overflow-hidden border-b border-slate-200">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-12">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-red-100 text-red-800 text-sm font-bold mb-3 border border-red-200">
+                    🔄 التحول النهائي
+                </span>
+                <h2 class="text-3xl md:text-4xl font-black text-slate-900">
+                    ليلتك هتتغير إزاي من النهاردة؟
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Before -->
+                <div class="bg-red-50 border-2 border-red-200 p-8 rounded-3xl shadow-sm relative overflow-hidden">
+                    <div class="flex items-center gap-3 mb-6 border-b border-red-200 pb-4">
+                        <span class="text-3xl">❌</span>
+                        <h3 class="text-2xl font-black text-red-900">قبل المانيوال:</h3>
+                    </div>
+                    <ul class="space-y-4 text-right">
+                        <li class="flex items-start gap-3 text-red-950 font-medium text-base md:text-lg">
+                            <span class="text-red-500 font-bold shrink-0">▪</span>
+                            <p>علاقة سريعة بتخلص في دقايق كأنها واجب ثقيل.</p>
+                        </li>
+                        <li class="flex items-start gap-3 text-red-950 font-medium text-base md:text-lg">
+                            <span class="text-red-500 font-bold shrink-0">▪</span>
+                            <p>رعب مستمر من فقدان الانتصاب أو القذف السريع.</p>
+                        </li>
+                        <li class="flex items-start gap-3 text-red-950 font-medium text-base md:text-lg">
+                            <span class="text-red-500 font-bold shrink-0">▪</span>
+                            <p>محاولاتك للمداعبة بتوجعها أو مابتحسش بيها أصلاً.</p>
+                        </li>
+                        <li class="flex items-start gap-3 text-red-950 font-medium text-base md:text-lg">
+                            <span class="text-red-500 font-bold shrink-0">▪</span>
+                            <p>روتين قاتل وإحساس بإن شغفكم انتهى.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- After -->
+                <div class="bg-emerald-50 border-2 border-emerald-300 p-8 rounded-3xl shadow-md relative overflow-hidden">
+                    <div class="flex items-center gap-3 mb-6 border-b border-emerald-200 pb-4">
+                        <span class="text-3xl">✅</span>
+                        <h3 class="text-2xl font-black text-emerald-900">بعد المانيوال:</h3>
+                    </div>
+                    <ul class="space-y-4 text-right">
+                        <li class="flex items-start gap-3 text-emerald-950 font-bold text-base md:text-lg">
+                            <span class="text-emerald-600 font-black shrink-0">✔</span>
+                            <p>رسالة جريئة منك الصبح تخليها مستنياك بالليل بقميص جديد.</p>
+                        </li>
+                        <li class="flex items-start gap-3 text-emerald-950 font-bold text-base md:text-lg">
+                            <span class="text-emerald-600 font-black shrink-0">✔</span>
+                            <p>تحكم كامل: بتطول في الماتش لـ 23 دقيقة وتخلص بمزاجك بانتصاب حديدي.</p>
+                        </li>
+                        <li class="flex items-start gap-3 text-emerald-950 font-bold text-base md:text-lg">
+                            <span class="text-emerald-600 font-black shrink-0">✔</span>
+                            <p>انهيار من المتعة: تكنيكات دقيقة بتوصلها للرعشة مرة واتنين وتختبر النافورة لأول مرة.</p>
+                        </li>
+                        <li class="flex items-start gap-3 text-emerald-950 font-bold text-base md:text-lg">
+                            <span class="text-emerald-600 font-black shrink-0">✔</span>
+                            <p>شغف مجنون: زوجة بتعشق حضنك وشايفاك أعظم راجل في حياتها.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6) WHO IS THIS FOR (هذا المانيوال صُمم خصيصاً لـ:) -->
+    <section class="py-16 bg-slate-100 relative overflow-hidden border-b border-slate-200">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-12">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-amber-100 text-amber-900 text-sm font-bold mb-3 border border-amber-200">
+                    🎯 لمن هذا المانيوال؟
+                </span>
+                <h2 class="text-3xl md:text-4xl font-black text-slate-900">
+                    هذا المانيوال صُمم خصيصاً لـ:
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Audience 1 -->
+                <div class="glass-panel p-6 rounded-2xl border-2 border-red-200 text-right bg-white shadow-sm">
+                    <div class="text-4xl mb-4">👤</div>
+                    <h3 class="text-xl font-bold text-red-700 mb-2">الزوج المرفوض أو المضمون:</h3>
+                    <p class="text-slate-700 text-base leading-relaxed font-medium">
+                        اللي مراته بقت باردة معاه بتتهرب من العلاقة بسبب ضغوط الحياة.
+                    </p>
+                </div>
+
+                <!-- Audience 2 -->
+                <div class="glass-panel p-6 rounded-2xl border-2 border-red-200 text-right bg-white shadow-sm">
+                    <div class="text-4xl mb-4">🧠</div>
+                    <h3 class="text-xl font-bold text-red-700 mb-2">ضحية "التفكير الزايد":</h3>
+                    <p class="text-slate-700 text-base leading-relaxed font-medium">
+                        الرجل اللي بيفقد الانتصاب في النص أو بيقذف بسرعة من كتر التوتر والخوف من الفشل.
+                    </p>
+                </div>
+
+                <!-- Audience 3 -->
+                <div class="glass-panel p-6 rounded-2xl border-2 border-red-200 text-right bg-white shadow-sm">
+                    <div class="text-4xl mb-4">👑</div>
+                    <h3 class="text-xl font-bold text-red-700 mb-2">الراجل اللي عاوز يبسط مراته بجد:</h3>
+                    <p class="text-slate-700 text-base leading-relaxed font-medium">
+                        اللي بيبذل مجهود بس حاسس إن مراته مابتوصلش للرعشة القوية، وعاوز يكتشف أسرار جسمها الحقيقية.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7) BONUSES SECTION (حزمة الأسلحة المحرمة - مجاناً اليوم) -->
+    <section class="py-20 bg-slate-50 relative border-b border-slate-200">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-14">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-red-100 text-red-800 text-sm font-bold mb-3 border border-red-200">
+                    🎁 عرض خيالي لفترة محدودة
+                </span>
+                <h2 class="text-3xl md:text-5xl font-black mb-4 text-slate-900">🔥 حزمة الأسلحة المحرمة - مجاناً اليوم</h2>
+                <p class="text-lg md:text-xl text-slate-700 font-bold max-w-3xl mx-auto leading-relaxed">
+                    عشان تبدأ تنفيذ النهاردة، هتاخد البونصات الجريئة دي (لأول 100 مشتري):
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Bonus 1 -->
+                <div class="glass-panel p-6 rounded-3xl relative overflow-hidden border border-amber-300 bg-white shadow-sm hover:shadow-md transition-shadow">
+                    <div class="absolute top-0 right-0 bg-amber-600 text-white text-xs font-black px-3 py-1 rounded-bl-lg shadow-sm">🎁 بونص #1 (قيمته 600 جنيه)</div>
+                    <div class="text-3xl mb-2 mt-4">🌊</div>
+                    <h3 class="text-xl font-bold mb-2 text-red-700">ليلة النافورة - الدليل التشريحي</h3>
+                    <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 shadow-2xs">
+                        <p class="text-slate-800 text-sm sm:text-base leading-relaxed font-bold">
+                            وداعاً للكسوف. الخريطة الواضحة للـ G-Spot وتكنيك "هزاز الدراع" لتوليد ضغط مستمر بيفجر السكويرت بأقل مجهود من صوابعك.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bonus 2 -->
+                <div class="glass-panel p-6 rounded-3xl relative overflow-hidden border border-amber-300 bg-white shadow-sm hover:shadow-md transition-shadow">
+                    <div class="absolute top-0 right-0 bg-amber-600 text-white text-xs font-black px-3 py-1 rounded-bl-lg shadow-sm">🎁 بونص #2 (قيمته 450 جنيه)</div>
+                    <div class="text-3xl mb-2 mt-4">👅</div>
+                    <h3 class="text-xl font-bold mb-2 text-red-700">ماستر اللحس والجنس الفموي</h3>
+                    <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 shadow-2xs">
+                        <p class="text-slate-800 text-sm sm:text-base leading-relaxed font-bold">
+                            كيف تمسح أعصاب البظر بتكنيك "البانكيك" من غير ما توجعها، وتستخدم الشفط لتوليد رعشات بتخليها تنهار قبل الإيلاج.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bonus 3 -->
+                <div class="glass-panel p-6 rounded-3xl relative overflow-hidden border border-amber-300 bg-white shadow-sm hover:shadow-md transition-shadow">
+                    <div class="absolute top-0 right-0 bg-amber-600 text-white text-xs font-black px-3 py-1 rounded-bl-lg shadow-sm">🎁 بونص #3 (قيمته 400 جنيه)</div>
+                    <div class="text-3xl mb-2 mt-4">😈</div>
+                    <h3 class="text-xl font-bold mb-2 text-red-700">العنف اللذيذ - Rough Sex</h3>
+                    <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 shadow-2xs">
+                        <p class="text-slate-800 text-sm sm:text-base leading-relaxed font-bold">
+                            إزاي تسيطر عليها بعنف آمن. استخدام "كلمة الأمان"، غمي عينيها، شد الشعر الصح، والعضة الخفيفة عشان تسلملك نفسها بقمة اللذة.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bonus 4 -->
+                <div class="glass-panel p-6 rounded-3xl relative overflow-hidden border border-amber-300 bg-white shadow-sm hover:shadow-md transition-shadow">
+                    <div class="absolute top-0 right-0 bg-amber-600 text-white text-xs font-black px-3 py-1 rounded-bl-lg shadow-sm">🎁 بونص #4 (قيمته 350 جنيه)</div>
+                    <div class="text-3xl mb-2 mt-4">✂️</div>
+                    <h3 class="text-xl font-bold mb-2 text-red-700">خدع الحجم البصرية</h3>
+                    <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 shadow-2xs">
+                        <p class="text-slate-800 text-sm sm:text-base leading-relaxed font-bold">
+                            خطوات فورية للتخلص من دهون العانة اللي بتدفن طول عضوك، وحيل النظافة الشخصية اللي بتدي إيحاء بضخامة العضو وترجعلك ثقتك.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8) SOCIAL PROOF (إثبات اجتماعي) -->
+    <section class="py-20 bg-white relative overflow-hidden border-b border-slate-200">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-10">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-red-100 text-red-800 text-sm font-bold mb-3 border border-red-200">
+                    💬 نتائج وتجارب حقيقية
+                </span>
+                <h2 class="text-3xl md:text-5xl font-black mb-4 text-slate-900">
+                    تجارب وآراء الرجال اللي طبقوا المانيوال 👑
+                </h2>
+            </div>
+
+            <!-- Quotes Box -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="p-6 bg-red-50/60 rounded-2xl border border-red-200 shadow-sm text-right">
+                    <div class="text-amber-500 mb-2 font-bold text-sm">★★★★★ تقييم 5/5</div>
+                    <p class="text-slate-800 text-base font-bold leading-relaxed mb-4">
+                        "عمري ما تخيلت إن المشكلة في دماغي! كنت بدخل الماتش مرعوب. بعد ما طبقت الـ Start-Stop.. بقيت بطول براحتي وانتصابي بقى حديد."
+                    </p>
+                    <span class="text-sm font-black text-red-800">— أحمد م.</span>
+                </div>
+
+                <div class="p-6 bg-red-50/60 rounded-2xl border border-red-200 shadow-sm text-right">
+                    <div class="text-amber-500 mb-2 font-bold text-sm">★★★★★ تقييم 5/5</div>
+                    <p class="text-slate-800 text-base font-bold leading-relaxed mb-4">
+                        "مراتي كانت رافضة العلاقة دايماً. جربت أفصل دماغها بمساج الأجداد واللمس البطيء.. أقسم بالله بقت هي اللي بتشدني للسرير!"
+                    </p>
+                    <span class="text-sm font-black text-red-800">— محمود ع.</span>
+                </div>
+
+                <div class="p-6 bg-red-50/60 rounded-2xl border border-red-200 shadow-sm text-right">
+                    <div class="text-amber-500 mb-2 font-bold text-sm">★★★★★ تقييم 5/5</div>
+                    <p class="text-slate-800 text-base font-bold leading-relaxed mb-4">
+                        "وصلتها للنافورة لأول مرة! تطبيق هزاز الدراع وتحديد مكان الـ G-spot جاب من الآخر. الكتاب ده جابلي الخلاصة من غير كسوف."
+                    </p>
+                    <span class="text-sm font-black text-red-800">— كريم س.</span>
+                </div>
+            </div>
+
+            <!-- Swiper Carousel -->
+            <div class="swiper testimonialsSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide p-3">
+                        <div class="w-full overflow-hidden rounded-xl bg-gray-50 mb-3">
+                            <img src="images/testomonial1.png" alt="رأي قارئ 1" class="w-full h-auto object-contain" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-slide p-3">
+                        <div class="w-full overflow-hidden rounded-xl bg-gray-50 mb-3">
+                            <img src="images/testomonial2.png" alt="رأي قارئ 2" class="w-full h-auto object-contain" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-slide p-3">
+                        <div class="w-full overflow-hidden rounded-xl bg-gray-50 mb-3">
+                            <img src="images/testomonial3.png" alt="رأي قارئ 3" class="w-full h-auto object-contain" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-slide p-3">
+                        <div class="w-full overflow-hidden rounded-xl bg-gray-50 mb-3">
+                            <img src="images/testomonial4.png" alt="رأي قارئ 4" class="w-full h-auto object-contain" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-slide p-3">
+                        <div class="w-full overflow-hidden rounded-xl bg-gray-50 mb-3">
+                            <img src="images/testomonial5.png" alt="رأي قارئ 5" class="w-full h-auto object-contain" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-slide p-3">
+                        <div class="w-full overflow-hidden rounded-xl bg-gray-50 mb-3">
+                            <img src="images/testomonial6.png" alt="رأي قارئ 6" class="w-full h-auto object-contain" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9) PRICE & VALUE STACK (عرض لا يُقاوم) -->
+    <section class="py-20 bg-slate-50 relative border-b border-slate-200">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-white p-8 md:p-10 rounded-3xl border-2 border-red-300 shadow-2xl">
+                <h3 class="text-2xl md:text-3xl font-black mb-6 text-center text-slate-900 leading-relaxed">
+                    كم يساوي إنك ترجع ثقتك في السرير وتشوف مراتك بتنهار من المتعة بين إيديك؟
+                </h3>
+                
+                <div class="space-y-3 mb-6 text-base sm:text-lg font-medium text-slate-800 max-w-lg mx-auto bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <div class="flex justify-between items-center border-b border-slate-200 pb-2.5">
+                        <span>المانيوال الشامل:</span>
+                        <span class="font-bold text-slate-900">750 EGP</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-200 pb-2.5">
+                        <span>بونص ليلة النافورة:</span>
+                        <span class="font-bold text-slate-900">600 EGP</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-200 pb-2.5">
+                        <span>بونص ماستر اللحس والجنس الفموي:</span>
+                        <span class="font-bold text-slate-900">450 EGP</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-200 pb-2.5">
+                        <span>بونص العنف اللذيذ (Rough Sex):</span>
+                        <span class="font-bold text-slate-900">400 EGP</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-200 pb-2.5">
+                        <span>بونص خدع الحجم البصرية:</span>
+                        <span class="font-bold text-slate-900">350 EGP</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-3 text-xl font-black text-slate-900">
+                        <span>💎 القيمة الإجمالية:</span>
+                        <span class="line-through text-red-600">2,550 جنيه مصري</span>
+                    </div>
+                </div>
+
+                <div class="text-center bg-gradient-to-r from-red-700 via-red-600 to-amber-600 text-white p-6 rounded-2xl shadow-lg mb-6 border border-amber-300">
+                    <span class="block text-sm font-bold text-amber-200 mb-1">🔥 السعر الحقيقي (اليوم فقط):</span>
+                    <span class="text-4xl md:text-5xl font-black mb-2 block">400 جنيه فقط!</span>
+                    <p class="text-xs sm:text-sm font-bold text-red-100">
+                        (توفير 2,150 جنيه - ده أقل من ثمن كشفية دكتور، أو علبة منشطات مضروبة بتدمر قلبك).
+                    </p>
+                </div>
+
+                <div class="flex justify-center mb-8">
+                    <button onclick="scrollToCheckout()" class="w-full sm:w-auto bg-gradient-to-r from-red-700 via-red-600 to-amber-600 hover:from-red-800 hover:to-amber-700 text-white font-black text-xl py-4 px-10 rounded-2xl btn-glow flex items-center justify-center gap-2">
+                        🔥 هات نسختي دلوقتي (400 جنيه بدل 2550 جنيه)
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                    </button>
+                </div>
+
+                <!-- Guarantee Box -->
+                <div class="bg-amber-100/80 border-2 border-amber-400 p-8 rounded-3xl text-amber-950 shadow-md">
+                    <div class="flex items-center gap-3 mb-3 border-b border-amber-300 pb-3">
+                        <span class="text-4xl">🛡️</span>
+                        <h4 class="text-2xl font-black text-amber-950">ضمان الاسترداد الماسي (Risk-Free):</h4>
+                    </div>
+                    <p class="text-base sm:text-lg text-amber-950 font-bold leading-relaxed text-right">
+                        إحنا واثقين في كلامنا. جرب لمسة واحدة لفك التوتر النهاردة، أو تكنيك واحد من الجنس الفموي. لو مرجعتش ثقتك الحديدية ومراتك ماتجننتش من المتعة في خلال 14 يوم، هنردلك فلوسك كلها بدون أسئلة. والبونصات هتفضل معاك كهدية.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10) FAQ (الأسئلة الشائعة) -->
+    <section class="py-16 bg-white relative border-b border-slate-200">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-12">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-amber-100 text-amber-900 text-sm font-bold mb-3 border border-amber-200">
+                    ❓ الأسئلة الشائعة
+                </span>
+                <h2 class="text-3xl md:text-4xl font-black text-slate-900">
+                    إجابات أهم الأسئلة اللي ممكن تدور في ذهنك
+                </h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Q1 -->
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 text-right">
+                    <h3 class="text-lg md:text-xl font-bold text-red-700 mb-2 flex items-center gap-2">
+                        <span>❓</span> الكتاب ده هيعالج سرعة القذف وضعف الانتصاب؟
+                    </h3>
+                    <p class="text-slate-700 text-base leading-relaxed font-medium">
+                        أكيد. هتمسح "قلق الأداء" من دماغك وتتعلم تمارين كيجل العضلية وتكنيك الـ Start-Stop اللي بيوصلك لـ 23 دقيقة تحكم وتأخير.
+                    </p>
+                </div>
+
+                <!-- Q2 -->
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 text-right">
+                    <h3 class="text-lg md:text-xl font-bold text-red-700 mb-2 flex items-center gap-2">
+                        <span>❓</span> مراتي قافلة دايماً ومضغوطة، هينفع معاها الكلام ده؟
+                    </h3>
+                    <p class="text-slate-700 text-base leading-relaxed font-medium">
+                        جداً. الباب الأول بيعلمك إزاي تفصلها عن التوتر بلمسات ومساج معين بيخليها تسترخي تماماً قبل ما تلمس مناطقها الحساسة.
+                    </p>
+                </div>
+
+                <!-- Q3 -->
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 text-right">
+                    <h3 class="text-lg md:text-xl font-bold text-red-700 mb-2 flex items-center gap-2">
+                        <span>❓</span> الكلام ده نظري وموجود ع النت؟
+                    </h3>
+                    <p class="text-slate-700 text-base leading-relaxed font-medium">
+                        مستحيل. ده "دليل تشريحي" صريح. بخطوات 1-2-3 هتعرف تحط إيدك فين، تستخدم لسانك إزاي، وتوصل للـ G-Spot بالمللي.
+                    </p>
+                </div>
+
+                <!-- Q4 -->
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 text-right">
+                    <h3 class="text-lg md:text-xl font-bold text-red-700 mb-2 flex items-center gap-2">
+                        <span>❓</span> السعر 400 جنيه مش غالي على كتاب PDF؟
+                    </h3>
+                    <p class="text-slate-700 text-base leading-relaxed font-medium">
+                        إنت بتشتري روشتة إنقاذ لعلاقتك الزوجية وثقتك في نفسك. المبلغ ده أرخص من خروجة، بس هيديك متعة وثقة مدى الحياة.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11) FINAL CTA & CHECKOUT FORM (دعوة قوية للشراء) -->
+    <section class="py-16 bg-slate-100 border-t border-slate-200" id="buy-section">
+        <div class="container mx-auto px-4 max-w-4xl">
+            
+            <div class="text-center mb-10">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-red-100 text-red-800 text-sm font-black mb-3 border border-red-200">
+                    🔥 القرار في إيدك
+                </span>
+                <h2 class="text-3xl font-black mb-4 text-slate-900">قدامك سكتين:</h2>
+            </div>
+
+            <!-- Decision Paths Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-10">
+                <div class="bg-red-50 p-6 rounded-2xl border border-red-200 text-right">
+                    <span class="text-3xl block mb-2">❌ السكة الأولى:</span>
+                    <p class="text-red-950 font-bold leading-relaxed">
+                        تقفل الصفحة دي، وترجع لسريرك النهاردة مرعوب ومضغوط.. وتكمل في روتين "تأدية الواجب" اللي بيقتل علاقتكم.
+                    </p>
+                </div>
+                
+                <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-300 text-right">
+                    <span class="text-3xl block mb-2">✅ السكة الثانية:</span>
+                    <p class="text-emerald-950 font-bold leading-relaxed">
+                        أو تستثمر في رجولتك وكرامتك، وتستلم "الكتالوج" دلوقتي وتبدأ النهاردة تشوف متعة ورعشة من مراتك عمرك ما شفتها قبل كدة.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mb-8">
+                <p class="text-xl font-black text-red-700">احصل على نسختك الآن بـ 400 جنيه فقط (شامل البونصات)</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+                <div class="p-8">
+                    <!-- Success Message -->
+                    <div id="success-message" class="hidden h-full flex flex-col items-center justify-center text-center animate-fade-in py-10 bg-white rounded-2xl">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-6">🎉 شكرًا لك!</h2>
+                        
+                        <h3 class="text-xl font-bold text-red-700 mb-8">💕 طلبك وصلنا بنجاح،</h3>
+                        
+                        <p class="text-lg font-bold text-slate-800 mb-4">
+                            يرجى إرسال صورة التحويل على <span class="text-emerald-600">الواتساب</span> من خلال اللينك الآتي:
+                        </p>
+                        
+                        <a href="https://wa.me/201553089928" id="whatsapp-link" target="_blank" class="text-blue-600 underline text-xl font-bold mb-8 hover:text-blue-800 transition-colors" dir="ltr">
+                            https://wa.me/201553089928
+                        </a>
+                        
+                        <p class="text-lg font-medium text-slate-800 mb-8">
+                            وسيتم إرسال المانيوال لك <span class="font-bold">فوراً</span> عند مشاهدة الرسالة.
+                        </p>
+                        
+                        <p class="text-lg font-medium text-slate-800 mb-8">
+                            ستجد المانيوال أيضاً في <span class="text-red-600 font-bold">الإيميل</span> الخاص بك.
+                        </p>
+                        
+                        <p class="text-base font-bold text-slate-900 mt-4 leading-loose border-t border-slate-200 pt-6">
+                            🚚 <span class="text-purple-600">وقت التوصيل:</span> المانيوال بيوصلك بشكل تلقائي فوراً على الإيميل<br>
+                            وبيصل على <span class="text-emerald-600">الواتساب</span> في خلال 24 ساعة بحد أقصى بإذن الله.
+                        </p>
+                    </div>
+
+                    <!-- The Form -->
+                    <form id="checkout-form" class="space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-4 mb-2">
+                            <div id="step-indicator-1" class="flex items-center gap-2 font-bold text-red-700">
+                                <span id="step-badge-1" class="w-7 h-7 rounded-full bg-red-700 text-white flex items-center justify-center text-sm">1</span>
+                                <span class="text-sm md:text-base">البيانات الأساسية</span>
+                            </div>
+                            <div class="h-0.5 bg-slate-200 flex-grow mx-3"></div>
+                            <div id="step-indicator-2" class="flex items-center gap-2 font-bold text-slate-400">
+                                <span id="step-badge-2" class="w-7 h-7 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-sm">2</span>
+                                <span class="text-sm md:text-base">الدفع والتأكيد</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 1 -->
+                        <div id="checkout-step-1" class="space-y-5">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-1">الاسم بالكامل <span class="text-red-500">*</span></label>
+                                <input type="text" id="user-name" required placeholder="اكتب اسمك هنا" class="form-input">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-1">رقم الواتساب <span class="text-red-500">*</span></label>
+                                <input type="tel" id="whatsapp-number" required placeholder="مثال: 01xxxxxxxxx" dir="ltr" class="form-input text-right">
+                                <p class="text-xs text-slate-500 mt-1">سنتواصل معك على هذا الرقم لإرسال المانيوال.</p>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-1">البريد الإلكتروني <span class="text-xs font-normal text-slate-500">(اختياري)</span></label>
+                                <input type="email" id="user-email" placeholder="مثال: name@example.com" dir="ltr" class="form-input text-right">
+                                <p class="text-xs text-slate-500 mt-1">(في حالة الرغبة في الاستلام على الإيميل بجانب الواتساب)</p>
+                            </div>
+
+                            <div class="mt-2 p-4 border border-red-200 bg-red-50 rounded-xl">
+                                <h4 class="font-bold text-sm text-red-600 mb-1 flex items-center gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                                    تنبيه هام ⚠️
+                                </h4>
+                                <p class="text-xs text-slate-700 font-medium">يرجى التأكد من كتابة رقم الواتساب بشكل صحيح لضمان وصول المانيوال إليك. المحتوى مخصص للمتزوجين فقط.</p>
+                            </div>
+
+                            <button type="button" id="next-step-btn" onclick="goToStep2()" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold text-lg py-4 rounded-xl shadow-lg transition-all mt-4 flex items-center justify-center gap-2">
+                                الخطوة الأخيرة لإتمام الطلب ➔
+                            </button>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div id="checkout-step-2" class="hidden space-y-6">
+                            <div class="mb-4 pt-2">
+                                <label class="block text-sm font-bold text-slate-700 mb-2">طريقة الدفع (400 ج.م)</label>
+                                <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-4 bg-slate-50 border border-slate-200 rounded-xl p-4">
+                                    <div class="text-right w-full flex flex-col items-end">
+                                        <p class="text-slate-700 font-medium text-sm leading-relaxed mb-3 w-full text-right">
+                                            متاح التحويل من خلال الرقم التالي على انستا باي والمحافظ الإلكترونية:
+                                        </p>
+                                        
+                                        <div class="mb-3 w-full max-w-sm flex flex-col items-end">
+                                            <div onclick="copyNumber()" class="inline-flex cursor-pointer overflow-hidden rounded-lg border border-red-300 shadow-sm transition-all hover:shadow-md w-full sm:w-auto" title="اضغط لنسخ الرقم">
+                                                <div class="bg-red-700 text-white px-4 py-3 flex items-center justify-center gap-2 border-r border-red-600 transition-colors hover:bg-red-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                                                    <span class="text-base font-bold">نسخ</span>
+                                                </div>
+                                                
+                                                <div class="bg-white px-5 py-3 flex items-center justify-center flex-grow">
+                                                    <span id="payment-number" class="text-xl tracking-widest font-black text-slate-800" dir="ltr">01093637678</span>
+                                                </div>
+                                            </div>
+
+                                            <div id="wallet-owner-info" class="hidden mt-2.5 w-full bg-amber-50 border border-amber-300 rounded-xl px-3.5 py-2.5 text-right shadow-xs flex items-center justify-between gap-2 animate-fade-in">
+                                                <span class="text-xs sm:text-sm font-extrabold text-amber-950 flex items-center gap-1.5">
+                                                    <span>👤</span>
+                                                    اسم صاحب المحفظة والحساب:
+                                                </span>
+                                                <span class="text-sm sm:text-base font-black text-red-700 bg-white px-3 py-1 rounded-lg border border-amber-200 shadow-xs">مصطفي م*</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <p class="text-slate-900 font-bold text-sm w-full text-right">
+                                            يرجى نسخ الرقم وإرفاق صورة التحويل
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="flex items-center justify-center shrink-0 w-full md:w-auto mt-4 md:mt-0">
+                                        <img src="images/wallets.jpg" alt="طرق الدفع" width="236" height="66" class="object-contain rounded-lg">
+                                    </div>
+                                </div>
+
+                                <div id="pay-first-hint" class="hidden p-4 sm:p-5 bg-emerald-50 border-2 border-emerald-300 rounded-2xl animate-fade-in text-right space-y-3 shadow-xs">
+                                    <div class="flex items-start gap-3">
+                                        <span class="text-3xl shrink-0">📸</span>
+                                        <div class="space-y-3 w-full">
+                                            <div class="bg-white p-4 rounded-xl border border-emerald-200 shadow-2xs space-y-3">
+                                                <p class="text-sm sm:text-base font-extrabold text-emerald-950 leading-relaxed">
+                                                    💡 علشان لو الصفحة تاهت منك أو حصل أي مشكلة:
+                                                </p>
+                                                <p class="text-xs sm:text-sm font-bold text-emerald-900 leading-relaxed">
+                                                    تقدر تتواصل معانا واتساب مباشرة وتستلم المانيوال فوراً!
+                                                </p>
+                                                <div class="flex flex-wrap items-center justify-between gap-2 bg-emerald-50/80 p-2.5 rounded-lg border border-emerald-200/60">
+                                                    <span class="text-xs sm:text-sm font-bold text-emerald-900">رقم واتساب الصفحة للتواصل والاستلام:</span>
+                                                    <span class="text-lg sm:text-xl font-black text-emerald-700 bg-white px-3 py-1 rounded-md border border-emerald-300 tracking-wider" dir="ltr">01553089928</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-1">صورة إيصال التحويل <span class="text-red-500">*</span></label>
+                                <div class="relative flex items-center justify-center w-full">
+                                    <label for="receipt-upload" class="flex flex-col items-center justify-center w-full h-32 border-2 border-slate-300 border-dashed rounded-xl cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                            <svg aria-hidden="true" class="w-8 h-8 mb-3 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                                            <p class="mb-2 text-sm text-slate-500"><span class="font-semibold">اضغط هنا لرفع الصورة</span></p>
+                                            <p class="text-xs text-slate-500" id="file-name-display">PNG, JPG</p>
+                                        </div>
+                                        <input id="receipt-upload" type="file" accept="image/*" class="hidden" onchange="updateFileName(this)" />
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button type="submit" id="submit-btn" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold text-lg py-4 rounded-xl shadow-lg transition-all mt-4 flex items-center justify-center gap-2">
+                                تأكيد الطلب واستلام المانيوال
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            </button>
+
+                            <button type="button" onclick="goToStep1()" class="w-full text-center text-sm font-bold text-slate-500 hover:text-slate-700 pt-2 block">
+                                ➔ العودة لتعديل البيانات
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12) FOOTER -->
+    <footer class="bg-slate-900 py-8 border-t border-slate-800 text-center text-sm text-slate-400">
+        <div class="container mx-auto px-4">
+            <p>© 2026 جميع الحقوق محفوظة - مانيوال المايسترو</p>
+            <p class="mt-2 text-xs opacity-70">هذا الموقع غير تابع لشركة فيسبوك أو أي من كياناتها.</p>
+            <div class="mt-4 flex items-center justify-center gap-4 text-xs text-slate-400 font-medium">
+                <a href="#buy-section" class="hover:text-amber-400 transition-colors">سياسة الخصوصية</a>
+                <span>•</span>
+                <a href="#buy-section" class="hover:text-amber-400 transition-colors">الشروط والأحكام</a>
+                <span>•</span>
+                <a href="https://wa.me/201553089928" target="_blank" class="hover:text-amber-400 transition-colors">تواصل معنا</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="fixed bottom-0 left-0 w-full p-4 bg-white/95 backdrop-blur-md border-t border-slate-200 md:hidden z-50">
+        <button onclick="scrollToCheckout()" class="block w-full bg-gradient-to-r from-red-700 to-amber-600 text-white text-center font-black text-lg py-3 rounded-xl shadow-xl flex items-center justify-center gap-2">
+            <span>🔥 أريد نسختي الآن (400 جنيه فقط - شامل البونصات)</span>
+        </button>
+    </div>
+
+    <!-- Custom Toast Message -->
+    <div id="toast">تم نسخ الرقم بنجاح!</div>
+
+    <!-- Image Zoom Modal / Lightbox -->
+    <div id="image-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4 transition-opacity duration-300 select-none">
+        <button onclick="closeImageModal()" class="absolute top-4 right-4 bg-white/20 hover:bg-white/40 text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold transition-all z-10 focus:outline-none cursor-pointer" title="إغلاق (Esc)">
+            ✕
+        </button>
+        <div class="relative max-w-4xl max-h-[90vh] w-full flex items-center justify-center overflow-auto p-2" onclick="event.stopPropagation()">
+            <img id="modal-image" src="" alt="صورة مكبرة" class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl transition-transform duration-300">
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        function openImageModal(src, alt) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            if (modal && modalImg) {
+                modalImg.src = src;
+                modalImg.alt = alt || 'صورة مكبرة';
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('image-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('image-modal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeImageModal();
+                    }
+                });
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbx0jdlGbW-rRSTI9B2GTvDDiUgorHOMRS2V_0B2-vWfoZIY6kny4572GjZz5mjCY-Qi/exec';
+        let globalOrderId = 'ORD-' + Date.now();
+        let addToCartTracked = false;
+        let lastSyncedData = "";
+        let liveSyncTimeout = null;
+
+        function updatePixelUserData(email, phone) {
+            try {
+                const pixelFn = window.fbq || (typeof fbq === 'function' ? fbq : null);
+                if (typeof pixelFn === 'function') {
+                    const userData = {};
+                    if (email) userData.em = email.toLowerCase().trim();
+                    if (phone) userData.ph = phone.replace(/\D/g, '');
+                    if (Object.keys(userData).length > 0) {
+                        pixelFn('init', '2204793433653923', userData);
+                    }
+                }
+            } catch (e) {
+                console.warn('[Meta Pixel] User data update failed:', e);
+            }
+        }
+
+        function firePixelEvent(eventName, isCustom = false, customData = {}) {
+            try {
+                if (eventName === 'Purchase') {
+                    if (sessionStorage.getItem('meta_purchase_fired') === 'true') {
+                        console.log('[Meta Pixel] Purchase event already fired once in this session. Skipping duplicate.');
+                        return;
+                    }
+                    sessionStorage.setItem('meta_purchase_fired', 'true');
+                }
+
+                const payload = {
+                    currency: 'EGP',
+                    value: 400.00,
+                    content_name: 'مانيوال المايسترو - العرض الكامل',
+                    content_type: 'product',
+                    ...customData
+                };
+
+                const eventId = (eventName.toLowerCase().substr(0, 3)) + '_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                const options = { eventID: eventId };
+
+                const pixelFn = window.fbq || (typeof fbq === 'function' ? fbq : null);
+                if (typeof pixelFn === 'function') {
+                    if (isCustom) {
+                        pixelFn('trackCustom', eventName, payload, options);
+                    } else {
+                        pixelFn('track', eventName, payload, options);
+                    }
+                    console.log(`[Meta Pixel Success] ${eventName} (${isCustom ? 'Custom' : 'Standard'}) Fired successfully! EventID: ${eventId}`, payload);
+                } else {
+                    console.warn(`[Meta Pixel Warning] fbq is not defined or blocked by client. Could not fire ${eventName}`);
+                }
+            } catch (err) {
+                console.error(`[Meta Pixel Error] Failed to fire ${eventName}:`, err);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            function initSwiperWithModal(selector) {
+                return new Swiper(selector, {
+                    effect: "slide",
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: "auto",
+                    spaceBetween: 15,
+                    initialSlide: 0,
+                    pagination: {
+                        el: selector + " .swiper-pagination",
+                        clickable: true,
+                    },
+                    on: {
+                        click: function(swiper, event) {
+                            const clickedSlide = swiper.clickedSlide;
+                            if (!clickedSlide) return;
+
+                            const img = clickedSlide.querySelector('img');
+                            if (!img) return;
+
+                            if (clickedSlide.classList.contains('swiper-slide-active')) {
+                                openImageModal(img.src, img.alt);
+                            } else {
+                                swiper.slideTo(swiper.clickedIndex);
+                            }
+                        }
+                    }
+                });
+            }
+
+            initSwiperWithModal(".indexSwiper");
+            initSwiperWithModal(".lessonsSwiper");
+            initSwiperWithModal(".proofSwiper");
+            initSwiperWithModal(".testimonialsSwiper");
+        });
+
+        function trackAddToCart() {
+            firePixelEvent('AddToCart');
+        }
+
+        function scrollToCheckout() {
+            trackAddToCart();
+
+            const step2 = document.getElementById('checkout-step-2');
+            if (step2 && !step2.classList.contains('hidden')) {
+                if (typeof goToStep1 === 'function') {
+                    goToStep1();
+                }
+            }
+
+            const nameInput = document.getElementById('user-name');
+            const targetElement = nameInput || document.getElementById('checkout-form') || document.getElementById('buy-section');
+
+            if (targetElement) {
+                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - 120;
+
+                window.scrollTo({
+                    top: Math.max(0, offsetPosition),
+                    behavior: 'smooth'
+                });
+            }
+
+            if (nameInput) {
+                nameInput.focus();
+                
+                setTimeout(() => {
+                    nameInput.focus();
+                    nameInput.classList.add('ring-4', 'ring-red-600/30');
+                    setTimeout(() => {
+                        nameInput.classList.remove('ring-4', 'ring-red-600/30');
+                    }, 2000);
+                }, 300);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const buySection = document.getElementById('buy-section');
+            if (buySection && 'IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            trackAddToCart();
+                        }
+                    });
+                }, { threshold: 0.2 });
+                observer.observe(buySection);
+            }
+        });
+
+        async function copyNumber() {
+            const textEl = document.getElementById('payment-number');
+            const text = textEl ? textEl.innerText.trim() : "";
+            let copied = false;
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                try {
+                    await navigator.clipboard.writeText(text);
+                    copied = true;
+                } catch (e) {
+                    copied = false;
+                }
+            }
+
+            if (!copied && text) {
+                const tempInput = document.createElement("input");
+                tempInput.value = text;
+                tempInput.style.position = "fixed";
+                tempInput.style.left = "-9999px";
+                tempInput.style.top = "0";
+                document.body.appendChild(tempInput);
+                try {
+                    tempInput.focus();
+                    tempInput.select();
+                    tempInput.setSelectionRange(0, 99999);
+                    copied = document.execCommand('copy');
+                } catch (err) {
+                    copied = false;
+                } finally {
+                    document.body.removeChild(tempInput);
+                }
+            }
+
+            if (copied) {
+                showToast('تم نسخ الرقم: ' + text);
+            } else {
+                showToast('يرجى نسخ الرقم يدوياً: ' + text);
+            }
+
+            const payFirstHint = document.getElementById('pay-first-hint');
+            if (payFirstHint) {
+                payFirstHint.classList.remove('hidden');
+            }
+
+            const walletOwnerInfo = document.getElementById('wallet-owner-info');
+            if (walletOwnerInfo) {
+                walletOwnerInfo.classList.remove('hidden');
+            }
+
+            firePixelEvent('CopyPaymentMethod', true);
+
+            const emailInput = document.getElementById('user-email');
+            const phoneInput = document.getElementById('whatsapp-number');
+            const email = emailInput ? emailInput.value.trim() : "";
+            const phone = phoneInput ? phoneInput.value.trim() : "";
+            if (email || phone) {
+                updatePixelUserData(email, phone);
+            }
+            firePixelEvent('Purchase');
+
+            const copyStatusPayload = {
+                action: 'updateStatus',
+                orderId: globalOrderId,
+                status: "نسخ رقم الدفع"
+            };
+            fetch(scriptUrl, {
+                method: 'POST',
+                body: JSON.stringify(copyStatusPayload)
+            }).catch(err => console.log('Copy status update error:', err));
+        }
+
+        function trackWhatsAppClick() {
+            firePixelEvent('WhatsApp', true);
+            firePixelEvent('Contact');
+
+            const deliveredPayload = {
+                action: 'updateStatus',
+                orderId: globalOrderId,
+                status: "🟢 تواصل واتساب (استلام قبل الدفع)"
+            };
+            fetch(scriptUrl, {
+                method: 'POST',
+                body: JSON.stringify(deliveredPayload)
+            }).catch(err => console.log('Delivered status update error:', err));
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.className = "show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+
+        function updateFileName(input) {
+            const display = document.getElementById('file-name-display');
+            if (input.files && input.files[0]) {
+                display.innerText = 'تم اختيار: ' + input.files[0].name;
+                display.classList.add('text-emerald-600', 'font-bold');
+            } else {
+                display.innerText = 'PNG, JPG';
+                display.classList.remove('text-emerald-600', 'font-bold');
+            }
+        }
+
+        function liveSyncData() {
+            const phoneInput = document.getElementById('whatsapp-number');
+            const nameInput = document.getElementById('user-name');
+            const emailInput = document.getElementById('user-email');
+
+            const phone = phoneInput ? phoneInput.value.trim() : "";
+            const name = nameInput ? nameInput.value.trim() : "";
+            const email = emailInput ? emailInput.value.trim() : "";
+            
+            if (phone && phone.length >= 10) {
+                const currentDataKey = `${globalOrderId}_${name}_${phone}_${email}`;
+                if (currentDataKey === lastSyncedData) return;
+                
+                lastSyncedData = currentDataKey;
+
+                updatePixelUserData(email, phone);
+
+                const initiatePayload = {
+                    action: 'initiate',
+                    orderId: globalOrderId,
+                    name: name || "عميل محتمل",
+                    phone: phone,
+                    email: email || "",
+                    status: "📝 تسجيل الرقم"
+                };
+                
+                fetch(scriptUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(initiatePayload)
+                }).catch(err => {
+                    console.log('Live sync error:', err);
+                    lastSyncedData = "";
+                });
+            }
+        }
+
+        function debouncedLiveSync() {
+            clearTimeout(liveSyncTimeout);
+            liveSyncTimeout = setTimeout(liveSyncData, 600);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const phoneInput = document.getElementById('whatsapp-number');
+            const nameInput = document.getElementById('user-name');
+            const emailInput = document.getElementById('user-email');
+
+            if (phoneInput) {
+                phoneInput.addEventListener('blur', liveSyncData);
+                phoneInput.addEventListener('input', debouncedLiveSync);
+            }
+            if (nameInput) nameInput.addEventListener('blur', liveSyncData);
+            if (emailInput) emailInput.addEventListener('blur', liveSyncData);
+        });
+
+        function goToStep1() {
+            document.getElementById('checkout-step-2').classList.add('hidden');
+            document.getElementById('checkout-step-1').classList.remove('hidden');
+
+            const ind1 = document.getElementById('step-indicator-1');
+            const ind2 = document.getElementById('step-indicator-2');
+            const badge1 = document.getElementById('step-badge-1');
+            const badge2 = document.getElementById('step-badge-2');
+
+            if (ind1 && badge1) {
+                ind1.className = "flex items-center gap-2 font-bold text-red-700";
+                badge1.className = "w-7 h-7 rounded-full bg-red-700 text-white flex items-center justify-center text-sm";
+                badge1.innerHTML = "1";
+            }
+            if (ind2 && badge2) {
+                ind2.className = "flex items-center gap-2 font-bold text-slate-400";
+                badge2.className = "w-7 h-7 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-sm";
+            }
+        }
+
+        function goToStep2() {
+            const nameInput = document.getElementById('user-name');
+            const phoneInput = document.getElementById('whatsapp-number');
+            const emailInput = document.getElementById('user-email');
+
+            const name = nameInput ? nameInput.value.trim() : "";
+            const phone = phoneInput ? phoneInput.value.trim() : "";
+            const email = emailInput ? emailInput.value.trim() : "";
+
+            if (!name) {
+                showToast("يرجى كتابة الاسم أولاً");
+                if (nameInput) nameInput.focus();
+                return;
+            }
+            if (!phone || phone.length < 10) {
+                showToast("يرجى كتابة رقم واتساب صحيح (10 أرقام على الأقل)");
+                if (phoneInput) phoneInput.focus();
+                return;
+            }
+            if (email && !email.includes('@')) {
+                showToast("يرجى كتابة بريد إلكتروني صحيح");
+                if (emailInput) emailInput.focus();
+                return;
+            }
+
+            updatePixelUserData(email, phone);
+
+            firePixelEvent('InitiateCheckout');
+
+            document.getElementById('checkout-step-1').classList.add('hidden');
+            document.getElementById('checkout-step-2').classList.remove('hidden');
+
+            const ind1 = document.getElementById('step-indicator-1');
+            const ind2 = document.getElementById('step-indicator-2');
+            const badge1 = document.getElementById('step-badge-1');
+            const badge2 = document.getElementById('step-badge-2');
+
+            if (ind1 && badge1) {
+                ind1.className = "flex items-center gap-2 font-bold text-slate-400";
+                badge1.className = "w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-sm";
+                badge1.innerHTML = "✓";
+            }
+            if (ind2 && badge2) {
+                ind2.className = "flex items-center gap-2 font-bold text-red-700";
+                badge2.className = "w-7 h-7 rounded-full bg-red-700 text-white flex items-center justify-center text-sm";
+            }
+
+            liveSyncData();
+            
+            const step2StatusPayload = {
+                action: 'updateStatus',
+                orderId: globalOrderId,
+                name: name,
+                phone: phone,
+                email: email,
+                status: "🟡 بدأت الدفع"
+            };
+            fetch(scriptUrl, {
+                method: 'POST',
+                body: JSON.stringify(step2StatusPayload)
+            }).catch(err => console.log('Status update error:', err));
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const waLink = document.getElementById('whatsapp-link');
+            if (waLink) {
+                waLink.addEventListener('click', function() {
+                    firePixelEvent('WhatsApp', true);
+                    firePixelEvent('Contact');
+
+                    const deliveredPayload = {
+                        action: 'updateStatus',
+                        orderId: globalOrderId,
+                        status: "🟢 تم التسليم "
+                    };
+                    fetch(scriptUrl, {
+                        method: 'POST',
+                        body: JSON.stringify(deliveredPayload)
+                    }).catch(err => console.log('Delivered status update error:', err));
+                });
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkoutForm = document.getElementById('checkout-form');
+            if (!checkoutForm) return;
+
+            checkoutForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = document.getElementById('submit-btn');
+                const name = document.getElementById('user-name').value.trim();
+                const phone = document.getElementById('whatsapp-number').value.trim();
+                const emailInput = document.getElementById('user-email');
+                const email = emailInput ? emailInput.value.trim() : "";
+                const fileInput = document.getElementById('receipt-upload');
+                const file = fileInput ? fileInput.files[0] : null;
+                
+                if (!file) {
+                    showToast("يرجى اختيار صورة الإيصال أولاً");
+                    return;
+                }
+
+                updatePixelUserData(email, phone);
+                firePixelEvent('Purchase');
+
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+                    submitBtn.innerHTML = `
+                        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        جاري رفع صورة التحويل...
+                    `;
+                }
+
+                const reader = new FileReader();
+                reader.onload = async function() {
+                    const base64String = reader.result.split(',')[1];
+                    const mimeType = file.type;
+
+                    const initiatePayload = {
+                        action: 'initiate',
+                        orderId: globalOrderId,
+                        name: name,
+                        phone: phone,
+                        email: email,
+                        status: "🔵 رفع الإيصال"
+                    };
+
+                    const uploadPayload = {
+                        action: 'upload',
+                        orderId: globalOrderId,
+                        name: name,
+                        email: email,
+                        base64Data: base64String,
+                        mimeType: mimeType,
+                        status: "🔵 رفع الإيصال"
+                    };
+
+                    try {
+                        await fetch(scriptUrl, {
+                            method: 'POST',
+                            body: JSON.stringify(initiatePayload)
+                        });
+
+                        await fetch(scriptUrl, {
+                            method: 'POST',
+                            body: JSON.stringify(uploadPayload)
+                        });
+
+                        showToast('تم الرفع بنجاح! 🚀');
+                        document.getElementById('checkout-form').classList.add('hidden');
+                        document.getElementById('success-message').classList.remove('hidden');
+                    } catch (error) {
+                        console.error('Error submitting form:', error);
+                        showToast('حدث خطأ في الشبكة أو أثناء الرفع، يرجى المحاولة مرة أخرى.');
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                            submitBtn.innerHTML = 'تأكيد الطلب واستلام المانيوال';
+                        }
+                    }
+                };
+                
+                reader.onerror = function() {
+                    showToast('حدث خطأ في قراءة الصورة من جهازك.');
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                        submitBtn.innerHTML = 'تأكيد الطلب واستلام المانيوال';
+                    }
+                };
+                
+                reader.readAsDataURL(file);
+            });
+        });
+    </script>
+</body>
+</html>
