@@ -1240,7 +1240,13 @@
                         </div>
 
                         <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mb-2">شكرًا لك! تم استلام طلبك بنجاح 💕</h2>
-                        <p class="text-slate-600 text-base font-bold mb-6">تم تسجيل بياناتك وإرفاق إيصال التحويل للمراجعة.</p>
+                        <p class="text-slate-600 text-base font-bold mb-4">تم تسجيل بياناتك وإرفاق إيصال التحويل للمراجعة.</p>
+
+                        <!-- Live Receipt Upload Status Indicator -->
+                        <div id="success-upload-status" class="w-full max-w-lg mb-6 p-3.5 rounded-2xl text-xs sm:text-sm font-bold text-center bg-emerald-50 text-emerald-900 border border-emerald-300 shadow-2xs flex items-center justify-center gap-2">
+                            <span class="text-base">✓</span>
+                            <span id="success-upload-status-text">تم حفظ وإرفاق صورة الإيصال بنجاح</span>
+                        </div>
 
                         <!-- Instant WhatsApp Delivery Box -->
                         <div class="w-full max-w-lg bg-emerald-50 border-2 border-emerald-300 p-6 rounded-3xl mb-6 text-center space-y-4 shadow-sm">
@@ -1800,7 +1806,6 @@
             if (email || phone) {
                 updatePixelUserData(email, phone);
             }
-            firePixelEvent('Purchase');
 
             const copyStatusPayload = {
                 action: 'updateStatus',
@@ -1833,12 +1838,50 @@
             toast.innerText = message;
             toast.className = "show";
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
-        }
-
-        let currentUploadId = 0;
+        }        let currentUploadId = 0;
         let uploadStatus = 'idle'; // 'idle' | 'uploading' | 'success' | 'error'
         let selectedFile = null;
-        let activeUploadPromise = null;
+
+        function readFileAsBase64(file, callback) {
+            if (!file) {
+                callback(null);
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const result = e.target.result || '';
+                const base64 = result.includes(',') ? result.split(',')[1] : result;
+                callback({ base64: base64, mimeType: file.type || 'image/jpeg' });
+            };
+            reader.onerror = function() {
+                callback(null);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function updateWhatsAppLinkURL() {
+            const waLink = document.getElementById('whatsapp-link');
+            if (!waLink) return;
+            const nameInput = document.getElementById('user-name');
+            const name = nameInput ? nameInput.value.trim() : "";
+            const msg = `السلام عليكم، تم الدفع لشراء مانيوال المايسترو!\nرقم الطلب: ${globalOrderId}${name ? '\nالاسم: ' + name : ''}`;
+            waLink.href = `https://wa.me/201553089928?text=${encodeURIComponent(msg)}`;
+        }
+
+        function updateSuccessStatusUI(isSuccess, textMsg) {
+            const statusText = document.getElementById('success-upload-status-text');
+            const statusBox = document.getElementById('success-upload-status');
+            if (statusText) {
+                statusText.innerText = textMsg || (isSuccess ? `تم حفظ وإرفاق صورة الإيصال بنجاح (رقم الطلب: ${globalOrderId})` : 'جاري تأكيد رفع صورة الإيصال في الخلفية...');
+            }
+            if (statusBox) {
+                if (isSuccess) {
+                    statusBox.className = "w-full max-w-lg mb-6 p-3.5 rounded-2xl text-xs sm:text-sm font-bold text-center bg-emerald-50 text-emerald-900 border border-emerald-300 shadow-2xs flex items-center justify-center gap-2";
+                } else {
+                    statusBox.className = "w-full max-w-lg mb-6 p-3.5 rounded-2xl text-xs sm:text-sm font-bold text-center bg-amber-50 text-amber-900 border border-amber-300 shadow-2xs flex items-center justify-center gap-2";
+                }
+            }
+        }
 
         function handleFileSelect(input) {
             const display = document.getElementById('file-name-display');
@@ -1876,19 +1919,27 @@
                           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        جاري رفع صورة الإيصال في الخلفية... ⏳
+                        جاري رفع صورة الإيصال... ⏳
                     </span>
                 `;
             }
 
             uploadStatus = 'uploading';
+            updateSuccessStatusUI(false, 'جاري تأكيد رفع صورة الإيصال في الخلفية... ⏳');
+            updateWhatsAppLinkURL();
 
-            const reader = new FileReader();
-            reader.onload = function() {
-                if (uploadId !== currentUploadId) return; // Superseded by a newer file selection
+            readFileAsBase64(file, function(fileData) {
+                if (uploadId !== currentUploadId) return;
 
-                const base64String = reader.result.split(',')[1];
-                const mimeType = file.type;
+                if (!fileData || !fileData.base64) {
+                    uploadStatus = 'error';
+                    if (statusIndicator) {
+                        statusIndicator.classList.remove('hidden', 'text-amber-600', 'text-emerald-600');
+                        statusIndicator.classList.add('text-red-600');
+                        statusIndicator.innerHTML = '⚠️ خطأ في قراءة الصورة من جهازك.';
+                    }
+                    return;
+                }
 
                 const nameInput = document.getElementById('user-name');
                 const phoneInput = document.getElementById('whatsapp-number');
@@ -1912,57 +1963,43 @@
                     orderId: globalOrderId,
                     name: name,
                     email: email,
-                    base64Data: base64String,
-                    mimeType: mimeType,
+                    base64Data: fileData.base64,
+                    mimeType: fileData.mimeType,
                     status: "🔵 رفع الإيصال"
                 };
 
-                activeUploadPromise = (async () => {
-                    try {
-                        await fetch(scriptUrl, {
-                            method: 'POST',
-                            body: JSON.stringify(initiatePayload)
-                        });
+                fetch(scriptUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(initiatePayload)
+                }).catch(err => console.log('Initiate payload error:', err));
 
-                        await fetch(scriptUrl, {
-                            method: 'POST',
-                            body: JSON.stringify(uploadPayload)
-                        });
-
-                        if (uploadId === currentUploadId) {
-                            uploadStatus = 'success';
-                            if (statusIndicator) {
-                                statusIndicator.classList.remove('hidden', 'text-amber-600', 'text-red-600');
-                                statusIndicator.classList.add('text-emerald-600');
-                                statusIndicator.innerHTML = '✓ تم رفع الصورة بنجاح!';
-                            }
+                fetch(scriptUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(uploadPayload)
+                })
+                .then(res => {
+                    if (uploadId === currentUploadId) {
+                        uploadStatus = 'success';
+                        if (statusIndicator) {
+                            statusIndicator.classList.remove('hidden', 'text-amber-600', 'text-red-600');
+                            statusIndicator.classList.add('text-emerald-600');
+                            statusIndicator.innerHTML = '✓ تم رفع الصورة بنجاح!';
                         }
-                    } catch (error) {
-                        console.error('Background upload error:', error);
-                        if (uploadId === currentUploadId) {
-                            uploadStatus = 'error';
-                            if (statusIndicator) {
-                                statusIndicator.classList.remove('hidden', 'text-amber-600', 'text-emerald-600');
-                                statusIndicator.classList.add('text-red-600');
-                                statusIndicator.innerHTML = '⚠️ تعذر الرفع الفوري، سيتم استكمال الرفع عند التأكيد.';
-                            }
+                        updateSuccessStatusUI(true, `✓ تم حفظ وإرفاق صورة الإيصال بنجاح (رقم الطلب: ${globalOrderId})`);
+                    }
+                })
+                .catch(err => {
+                    console.error('Upload error:', err);
+                    if (uploadId === currentUploadId) {
+                        uploadStatus = 'error';
+                        if (statusIndicator) {
+                            statusIndicator.classList.remove('hidden', 'text-amber-600', 'text-emerald-600');
+                            statusIndicator.classList.add('text-red-600');
+                            statusIndicator.innerHTML = '⚠️ تعذر الرفع، سيتم الإرسال عند التأكيد.';
                         }
                     }
-                })();
-            };
-
-            reader.onerror = function() {
-                if (uploadId === currentUploadId) {
-                    uploadStatus = 'error';
-                    if (statusIndicator) {
-                        statusIndicator.classList.remove('hidden', 'text-amber-600', 'text-emerald-600');
-                        statusIndicator.classList.add('text-red-600');
-                        statusIndicator.innerHTML = '⚠️ خطأ في قراءة ملف الصورة من جهازك.';
-                    }
-                }
-            };
-
-            reader.readAsDataURL(file);
+                });
+            });
         }
 
         function updateFileName(input) {
@@ -1970,10 +2007,8 @@
         }
 
         function triggerUploadPayload(file, name, phone, email) {
-            const reader = new FileReader();
-            reader.onload = async function() {
-                const base64String = reader.result.split(',')[1];
-                const mimeType = file.type;
+            readFileAsBase64(file, function(fileData) {
+                if (!fileData || !fileData.base64) return;
 
                 const initiatePayload = {
                     action: 'initiate',
@@ -1989,27 +2024,18 @@
                     orderId: globalOrderId,
                     name: name,
                     email: email,
-                    base64Data: base64String,
-                    mimeType: mimeType,
+                    base64Data: fileData.base64,
+                    mimeType: fileData.mimeType,
                     status: "🔵 رفع الإيصال"
                 };
 
-                try {
-                    await fetch(scriptUrl, {
-                        method: 'POST',
-                        body: JSON.stringify(initiatePayload)
-                    });
-
-                    await fetch(scriptUrl, {
-                        method: 'POST',
-                        body: JSON.stringify(uploadPayload)
-                    });
+                fetch(scriptUrl, { method: 'POST', body: JSON.stringify(initiatePayload) }).catch(e => {});
+                fetch(scriptUrl, { method: 'POST', body: JSON.stringify(uploadPayload) })
+                .then(() => {
                     uploadStatus = 'success';
-                } catch (err) {
-                    console.error('Submit background upload error:', err);
-                }
-            };
-            reader.readAsDataURL(file);
+                    updateSuccessStatusUI(true, `✓ تم حفظ وإرفاق صورة الإيصال بنجاح (رقم الطلب: ${globalOrderId})`);
+                }).catch(e => {});
+            });
         }
 
         function liveSyncData() {
@@ -2112,6 +2138,7 @@
             }
 
             updatePixelUserData(email, phone);
+            updateWhatsAppLinkURL();
 
             firePixelEvent('InitiateCheckout');
 
@@ -2153,13 +2180,14 @@
             const waLink = document.getElementById('whatsapp-link');
             if (waLink) {
                 waLink.addEventListener('click', function() {
+                    firePixelEvent('Purchase');
                     firePixelEvent('WhatsApp', true);
                     firePixelEvent('Contact');
 
                     const deliveredPayload = {
                         action: 'updateStatus',
                         orderId: globalOrderId,
-                        status: "🟢 تم التسليم "
+                        status: "🟢 تم التسليم (تواصل واتساب)"
                     };
                     fetch(scriptUrl, {
                         method: 'POST',
@@ -2191,22 +2219,36 @@
                 const email = emailInput ? emailInput.value.trim() : "";
 
                 updatePixelUserData(email, phone);
+                updateWhatsAppLinkURL();
                 firePixelEvent('Purchase');
-                trackWhatsAppClick();
 
-                // If upload hasn't started yet or failed previously, fire it in the background now
+                // If upload hasn't completed yet or was idle/errored, trigger upload
                 if (uploadStatus === 'idle' || uploadStatus === 'error') {
                     triggerUploadPayload(file, name, phone, email);
                 }
 
                 // Show success screen
                 document.getElementById('checkout-form').classList.add('hidden');
-                document.getElementById('success-message').classList.remove('hidden');
+                const successMsg = document.getElementById('success-message');
+                if (successMsg) {
+                    successMsg.classList.remove('hidden');
+                    successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
 
-                showToast('تم استلام الطلب! جاري الانتقال للواتساب... 🚀');
+                showToast('تم استلام طلبك بنجاح! 💕');
 
-                // Immediately open WhatsApp without waiting for upload to finish
-                window.open('https://wa.me/201553089928', '_blank');
+                const submitStatusPayload = {
+                    action: 'updateStatus',
+                    orderId: globalOrderId,
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    status: "🔵 تم إرسال الطلب (في انتظار الواتساب)"
+                };
+                fetch(scriptUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(submitStatusPayload)
+                }).catch(err => console.log('Submit status update error:', err));
             });
         });
     </script>
