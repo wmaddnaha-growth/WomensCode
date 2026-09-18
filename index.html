@@ -1603,6 +1603,7 @@
         let addToCartTracked = false;
         let lastSyncedData = "";
         let liveSyncTimeout = null;
+        let hasDeliveredToWhatsApp = false;
 
         function updatePixelUserData(email, phone) {
             try {
@@ -1807,18 +1808,21 @@
                 updatePixelUserData(email, phone);
             }
 
-            const copyStatusPayload = {
-                action: 'updateStatus',
-                orderId: globalOrderId,
-                status: "نسخ رقم الدفع"
-            };
-            fetch(scriptUrl, {
-                method: 'POST',
-                body: JSON.stringify(copyStatusPayload)
-            }).catch(err => console.log('Copy status update error:', err));
+            if (!hasDeliveredToWhatsApp) {
+                const copyStatusPayload = {
+                    action: 'updateStatus',
+                    orderId: globalOrderId,
+                    status: "نسخ رقم الدفع"
+                };
+                fetch(scriptUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(copyStatusPayload)
+                }).catch(err => console.log('Copy status update error:', err));
+            }
         }
 
         function trackWhatsAppClick() {
+            hasDeliveredToWhatsApp = true;
             firePixelEvent('WhatsApp', true);
             firePixelEvent('Contact');
 
@@ -1954,9 +1958,11 @@
                     orderId: globalOrderId,
                     name: name,
                     phone: phone,
-                    email: email,
-                    status: "🔵 رفع الإيصال"
+                    email: email
                 };
+                if (!hasDeliveredToWhatsApp) {
+                    initiatePayload.status = "🔵 رفع الإيصال";
+                }
 
                 const uploadPayload = {
                     action: 'upload',
@@ -1964,9 +1970,11 @@
                     name: name,
                     email: email,
                     base64Data: fileData.base64,
-                    mimeType: fileData.mimeType,
-                    status: "🔵 رفع الإيصال"
+                    mimeType: fileData.mimeType
                 };
+                if (!hasDeliveredToWhatsApp) {
+                    uploadPayload.status = "🔵 رفع الإيصال";
+                }
 
                 fetch(scriptUrl, {
                     method: 'POST',
@@ -2015,9 +2023,11 @@
                     orderId: globalOrderId,
                     name: name,
                     phone: phone,
-                    email: email,
-                    status: "🔵 رفع الإيصال"
+                    email: email
                 };
+                if (!hasDeliveredToWhatsApp) {
+                    initiatePayload.status = "🔵 رفع الإيصال";
+                }
 
                 const uploadPayload = {
                     action: 'upload',
@@ -2025,9 +2035,11 @@
                     name: name,
                     email: email,
                     base64Data: fileData.base64,
-                    mimeType: fileData.mimeType,
-                    status: "🔵 رفع الإيصال"
+                    mimeType: fileData.mimeType
                 };
+                if (!hasDeliveredToWhatsApp) {
+                    uploadPayload.status = "🔵 رفع الإيصال";
+                }
 
                 fetch(scriptUrl, { method: 'POST', body: JSON.stringify(initiatePayload) }).catch(e => {});
                 fetch(scriptUrl, { method: 'POST', body: JSON.stringify(uploadPayload) })
@@ -2055,22 +2067,24 @@
 
                 updatePixelUserData(email, phone);
 
-                const initiatePayload = {
-                    action: 'initiate',
-                    orderId: globalOrderId,
-                    name: name || "عميل محتمل",
-                    phone: phone,
-                    email: email || "",
-                    status: "📝 تسجيل الرقم"
-                };
-                
-                fetch(scriptUrl, {
-                    method: 'POST',
-                    body: JSON.stringify(initiatePayload)
-                }).catch(err => {
-                    console.log('Live sync error:', err);
-                    lastSyncedData = "";
-                });
+                if (!hasDeliveredToWhatsApp) {
+                    const initiatePayload = {
+                        action: 'initiate',
+                        orderId: globalOrderId,
+                        name: name || "عميل محتمل",
+                        phone: phone,
+                        email: email || "",
+                        status: "📝 تسجيل الرقم"
+                    };
+                    
+                    fetch(scriptUrl, {
+                        method: 'POST',
+                        body: JSON.stringify(initiatePayload)
+                    }).catch(err => {
+                        console.log('Live sync error:', err);
+                        lastSyncedData = "";
+                    });
+                }
             }
         }
 
@@ -2162,24 +2176,27 @@
 
             liveSyncData();
             
-            const step2StatusPayload = {
-                action: 'updateStatus',
-                orderId: globalOrderId,
-                name: name,
-                phone: phone,
-                email: email,
-                status: "🟡 بدأت الدفع"
-            };
-            fetch(scriptUrl, {
-                method: 'POST',
-                body: JSON.stringify(step2StatusPayload)
-            }).catch(err => console.log('Status update error:', err));
+            if (!hasDeliveredToWhatsApp) {
+                const step2StatusPayload = {
+                    action: 'updateStatus',
+                    orderId: globalOrderId,
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    status: "🟡 بدأت الدفع"
+                };
+                fetch(scriptUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(step2StatusPayload)
+                }).catch(err => console.log('Status update error:', err));
+            }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
             const waLink = document.getElementById('whatsapp-link');
             if (waLink) {
                 waLink.addEventListener('click', function() {
+                    hasDeliveredToWhatsApp = true;
                     firePixelEvent('Purchase');
                     firePixelEvent('WhatsApp', true);
                     firePixelEvent('Contact');
@@ -2187,7 +2204,7 @@
                     const deliveredPayload = {
                         action: 'updateStatus',
                         orderId: globalOrderId,
-                        status: "🟢 تم التسليم (تواصل واتساب)"
+                        status: "🟢 تم التسليم"
                     };
                     fetch(scriptUrl, {
                         method: 'POST',
@@ -2237,18 +2254,20 @@
 
                 showToast('تم استلام طلبك بنجاح! 💕');
 
-                const submitStatusPayload = {
-                    action: 'updateStatus',
-                    orderId: globalOrderId,
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    status: "🔵 تم إرسال الطلب (في انتظار الواتساب)"
-                };
-                fetch(scriptUrl, {
-                    method: 'POST',
-                    body: JSON.stringify(submitStatusPayload)
-                }).catch(err => console.log('Submit status update error:', err));
+                if (!hasDeliveredToWhatsApp) {
+                    const submitStatusPayload = {
+                        action: 'updateStatus',
+                        orderId: globalOrderId,
+                        name: name,
+                        phone: phone,
+                        email: email,
+                        status: "🔵 رفع الإيصال"
+                    };
+                    fetch(scriptUrl, {
+                        method: 'POST',
+                        body: JSON.stringify(submitStatusPayload)
+                    }).catch(err => console.log('Submit status update error:', err));
+                }
             });
         });
     </script>
