@@ -1389,9 +1389,10 @@
                                             <p class="mb-2 text-sm text-slate-500"><span class="font-semibold">اضغط هنا لرفع الصورة</span></p>
                                             <p class="text-xs text-slate-500" id="file-name-display">PNG, JPG</p>
                                         </div>
-                                        <input id="receipt-upload" type="file" accept="image/*" class="hidden" onchange="updateFileName(this)" />
+                                        <input id="receipt-upload" type="file" accept="image/*" class="hidden" onchange="handleFileSelect(this)" />
                                     </label>
                                 </div>
+                                <div id="upload-status-indicator" class="mt-2 text-xs font-bold text-center hidden"></div>
                             </div>
 
                             <button type="submit" id="submit-btn" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold text-lg py-4 rounded-xl shadow-lg transition-all mt-4 flex items-center justify-center gap-2">
@@ -1819,7 +1820,7 @@
             const deliveredPayload = {
                 action: 'updateStatus',
                 orderId: globalOrderId,
-                status: "🟢 تواصل واتساب (استلام قبل الدفع)"
+                status: "🟢 تم التسليم"
             };
             fetch(scriptUrl, {
                 method: 'POST',
@@ -1834,15 +1835,181 @@
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
         }
 
-        function updateFileName(input) {
+        let currentUploadId = 0;
+        let uploadStatus = 'idle'; // 'idle' | 'uploading' | 'success' | 'error'
+        let selectedFile = null;
+        let activeUploadPromise = null;
+
+        function handleFileSelect(input) {
             const display = document.getElementById('file-name-display');
-            if (input.files && input.files[0]) {
-                display.innerText = 'تم اختيار: ' + input.files[0].name;
-                display.classList.add('text-emerald-600', 'font-bold');
-            } else {
-                display.innerText = 'PNG, JPG';
-                display.classList.remove('text-emerald-600', 'font-bold');
+            const statusIndicator = document.getElementById('upload-status-indicator');
+
+            if (!input.files || !input.files[0]) {
+                if (display) {
+                    display.innerText = 'PNG, JPG';
+                    display.classList.remove('text-emerald-600', 'font-bold');
+                }
+                if (statusIndicator) {
+                    statusIndicator.classList.add('hidden');
+                }
+                uploadStatus = 'idle';
+                selectedFile = null;
+                return;
             }
+
+            const file = input.files[0];
+            selectedFile = file;
+            currentUploadId++;
+            const uploadId = currentUploadId;
+
+            if (display) {
+                display.innerText = 'تم اختيار: ' + file.name;
+                display.classList.add('text-emerald-600', 'font-bold');
+            }
+
+            if (statusIndicator) {
+                statusIndicator.classList.remove('hidden', 'text-emerald-600', 'text-red-600');
+                statusIndicator.classList.add('text-amber-600');
+                statusIndicator.innerHTML = `
+                    <span class="inline-flex items-center gap-1.5 justify-center">
+                        <svg class="animate-spin h-4 w-4 text-amber-600 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        جاري رفع صورة الإيصال في الخلفية... ⏳
+                    </span>
+                `;
+            }
+
+            uploadStatus = 'uploading';
+
+            const reader = new FileReader();
+            reader.onload = function() {
+                if (uploadId !== currentUploadId) return; // Superseded by a newer file selection
+
+                const base64String = reader.result.split(',')[1];
+                const mimeType = file.type;
+
+                const nameInput = document.getElementById('user-name');
+                const phoneInput = document.getElementById('whatsapp-number');
+                const emailInput = document.getElementById('user-email');
+
+                const name = nameInput ? nameInput.value.trim() : "";
+                const phone = phoneInput ? phoneInput.value.trim() : "";
+                const email = emailInput ? emailInput.value.trim() : "";
+
+                const initiatePayload = {
+                    action: 'initiate',
+                    orderId: globalOrderId,
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    status: "🔵 رفع الإيصال"
+                };
+
+                const uploadPayload = {
+                    action: 'upload',
+                    orderId: globalOrderId,
+                    name: name,
+                    email: email,
+                    base64Data: base64String,
+                    mimeType: mimeType,
+                    status: "🔵 رفع الإيصال"
+                };
+
+                activeUploadPromise = (async () => {
+                    try {
+                        await fetch(scriptUrl, {
+                            method: 'POST',
+                            body: JSON.stringify(initiatePayload)
+                        });
+
+                        await fetch(scriptUrl, {
+                            method: 'POST',
+                            body: JSON.stringify(uploadPayload)
+                        });
+
+                        if (uploadId === currentUploadId) {
+                            uploadStatus = 'success';
+                            if (statusIndicator) {
+                                statusIndicator.classList.remove('hidden', 'text-amber-600', 'text-red-600');
+                                statusIndicator.classList.add('text-emerald-600');
+                                statusIndicator.innerHTML = '✓ تم رفع الصورة بنجاح!';
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Background upload error:', error);
+                        if (uploadId === currentUploadId) {
+                            uploadStatus = 'error';
+                            if (statusIndicator) {
+                                statusIndicator.classList.remove('hidden', 'text-amber-600', 'text-emerald-600');
+                                statusIndicator.classList.add('text-red-600');
+                                statusIndicator.innerHTML = '⚠️ تعذر الرفع الفوري، سيتم استكمال الرفع عند التأكيد.';
+                            }
+                        }
+                    }
+                })();
+            };
+
+            reader.onerror = function() {
+                if (uploadId === currentUploadId) {
+                    uploadStatus = 'error';
+                    if (statusIndicator) {
+                        statusIndicator.classList.remove('hidden', 'text-amber-600', 'text-emerald-600');
+                        statusIndicator.classList.add('text-red-600');
+                        statusIndicator.innerHTML = '⚠️ خطأ في قراءة ملف الصورة من جهازك.';
+                    }
+                }
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        function updateFileName(input) {
+            handleFileSelect(input);
+        }
+
+        function triggerUploadPayload(file, name, phone, email) {
+            const reader = new FileReader();
+            reader.onload = async function() {
+                const base64String = reader.result.split(',')[1];
+                const mimeType = file.type;
+
+                const initiatePayload = {
+                    action: 'initiate',
+                    orderId: globalOrderId,
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    status: "🔵 رفع الإيصال"
+                };
+
+                const uploadPayload = {
+                    action: 'upload',
+                    orderId: globalOrderId,
+                    name: name,
+                    email: email,
+                    base64Data: base64String,
+                    mimeType: mimeType,
+                    status: "🔵 رفع الإيصال"
+                };
+
+                try {
+                    await fetch(scriptUrl, {
+                        method: 'POST',
+                        body: JSON.stringify(initiatePayload)
+                    });
+
+                    await fetch(scriptUrl, {
+                        method: 'POST',
+                        body: JSON.stringify(uploadPayload)
+                    });
+                    uploadStatus = 'success';
+                } catch (err) {
+                    console.error('Submit background upload error:', err);
+                }
+            };
+            reader.readAsDataURL(file);
         }
 
         function liveSyncData() {
@@ -2009,93 +2176,37 @@
             checkoutForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                const submitBtn = document.getElementById('submit-btn');
+                const fileInput = document.getElementById('receipt-upload');
+                const file = (fileInput && fileInput.files && fileInput.files[0]) ? fileInput.files[0] : selectedFile;
+                
+                if (!file) {
+                    showToast("يرجى اختيار صورة الإيصال أولاً");
+                    if (fileInput) fileInput.focus();
+                    return;
+                }
+
                 const name = document.getElementById('user-name').value.trim();
                 const phone = document.getElementById('whatsapp-number').value.trim();
                 const emailInput = document.getElementById('user-email');
                 const email = emailInput ? emailInput.value.trim() : "";
-                const fileInput = document.getElementById('receipt-upload');
-                const file = fileInput ? fileInput.files[0] : null;
-                
-                if (!file) {
-                    showToast("يرجى اختيار صورة الإيصال أولاً");
-                    return;
-                }
 
                 updatePixelUserData(email, phone);
                 firePixelEvent('Purchase');
+                trackWhatsAppClick();
 
-                if (submitBtn) {
-                    submitBtn.disabled = true;
-                    submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
-                    submitBtn.innerHTML = `
-                        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        جاري رفع صورة التحويل...
-                    `;
+                // If upload hasn't started yet or failed previously, fire it in the background now
+                if (uploadStatus === 'idle' || uploadStatus === 'error') {
+                    triggerUploadPayload(file, name, phone, email);
                 }
 
-                const reader = new FileReader();
-                reader.onload = async function() {
-                    const base64String = reader.result.split(',')[1];
-                    const mimeType = file.type;
+                // Show success screen
+                document.getElementById('checkout-form').classList.add('hidden');
+                document.getElementById('success-message').classList.remove('hidden');
 
-                    const initiatePayload = {
-                        action: 'initiate',
-                        orderId: globalOrderId,
-                        name: name,
-                        phone: phone,
-                        email: email,
-                        status: "🔵 رفع الإيصال"
-                    };
+                showToast('تم استلام الطلب! جاري الانتقال للواتساب... 🚀');
 
-                    const uploadPayload = {
-                        action: 'upload',
-                        orderId: globalOrderId,
-                        name: name,
-                        email: email,
-                        base64Data: base64String,
-                        mimeType: mimeType,
-                        status: "🔵 رفع الإيصال"
-                    };
-
-                    try {
-                        await fetch(scriptUrl, {
-                            method: 'POST',
-                            body: JSON.stringify(initiatePayload)
-                        });
-
-                        await fetch(scriptUrl, {
-                            method: 'POST',
-                            body: JSON.stringify(uploadPayload)
-                        });
-
-                        showToast('تم الرفع بنجاح! 🚀');
-                        document.getElementById('checkout-form').classList.add('hidden');
-                        document.getElementById('success-message').classList.remove('hidden');
-                    } catch (error) {
-                        console.error('Error submitting form:', error);
-                        showToast('حدث خطأ في الشبكة أو أثناء الرفع، يرجى المحاولة مرة أخرى.');
-                        if (submitBtn) {
-                            submitBtn.disabled = false;
-                            submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
-                            submitBtn.innerHTML = 'تأكيد الطلب واستلام المانيوال';
-                        }
-                    }
-                };
-                
-                reader.onerror = function() {
-                    showToast('حدث خطأ في قراءة الصورة من جهازك.');
-                    if (submitBtn) {
-                        submitBtn.disabled = false;
-                        submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
-                        submitBtn.innerHTML = 'تأكيد الطلب واستلام المانيوال';
-                    }
-                };
-                
-                reader.readAsDataURL(file);
+                // Immediately open WhatsApp without waiting for upload to finish
+                window.open('https://wa.me/201553089928', '_blank');
             });
         });
     </script>
