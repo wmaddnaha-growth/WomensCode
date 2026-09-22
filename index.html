@@ -1914,6 +1914,14 @@
                 display.classList.add('text-emerald-600', 'font-bold');
             }
 
+            // إرسال حدث Purchase للبيكسل فور اختيار صورة الإيصال
+            const phoneInput = document.getElementById('whatsapp-number');
+            const emailInput = document.getElementById('user-email');
+            const phone = phoneInput ? phoneInput.value.trim() : "";
+            const email = emailInput ? emailInput.value.trim() : "";
+            updatePixelUserData(email, phone);
+            firePixelEvent('Purchase');
+
             if (statusIndicator) {
                 statusIndicator.classList.remove('hidden', 'text-emerald-600', 'text-red-600');
                 statusIndicator.classList.add('text-amber-600');
