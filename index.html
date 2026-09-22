@@ -1258,12 +1258,12 @@
                                 لو حابب تستلم المانيوال والكتب <span class="text-emerald-700 font-extrabold">فوراً دلوقتي</span>، اضغط على زرار الواتساب وابعت صورة الإيصال هناك:
                             </p>
 
-                            <a href="https://wa.me/201553089928" id="whatsapp-link" target="_blank" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black text-lg sm:text-xl py-4 px-6 rounded-2xl shadow-md transition-all flex items-center justify-center gap-2">
+                            <a href="https://wa.me/201142079160" id="whatsapp-link" target="_blank" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black text-lg sm:text-xl py-4 px-6 rounded-2xl shadow-md transition-all flex items-center justify-center gap-2">
                                 💬 اضغط هنا لإرسال الإيصال على الواتساب واستلام الكتب فوراً
                             </a>
 
                             <p class="text-xs sm:text-sm font-semibold text-emerald-900" dir="ltr">
-                                https://wa.me/201553089928
+                                https://wa.me/201142079160
                             </p>
                         </div>
 
@@ -1378,7 +1378,7 @@
                                                 </p>
                                                 <div class="flex flex-wrap items-center justify-between gap-2 bg-emerald-50/80 p-2.5 rounded-lg border border-emerald-200/60">
                                                     <span class="text-xs sm:text-sm font-bold text-emerald-900">رقم واتساب الصفحة للتواصل والاستلام:</span>
-                                                    <span class="text-lg sm:text-xl font-black text-emerald-700 bg-white px-3 py-1 rounded-md border border-emerald-300 tracking-wider" dir="ltr">01553089928</span>
+                                                    <span class="text-lg sm:text-xl font-black text-emerald-700 bg-white px-3 py-1 rounded-md border border-emerald-300 tracking-wider" dir="ltr">01142079160</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1426,7 +1426,7 @@
                 <span>•</span>
                 <a href="#buy-section" class="hover:text-amber-400 transition-colors">الشروط والأحكام</a>
                 <span>•</span>
-                <a href="https://wa.me/201553089928" target="_blank" class="hover:text-amber-400 transition-colors">تواصل معنا</a>
+                <a href="https://wa.me/201142079160" target="_blank" class="hover:text-amber-400 transition-colors">تواصل معنا</a>
             </div>
         </div>
     </footer>
@@ -1869,7 +1869,7 @@
             const nameInput = document.getElementById('user-name');
             const name = nameInput ? nameInput.value.trim() : "";
             const msg = `السلام عليكم، تم الدفع لشراء مانيوال المايسترو!\nرقم الطلب: ${globalOrderId}${name ? '\nالاسم: ' + name : ''}`;
-            waLink.href = `https://wa.me/201553089928?text=${encodeURIComponent(msg)}`;
+            waLink.href = `https://wa.me/201142079160?text=${encodeURIComponent(msg)}`;
         }
 
         function updateSuccessStatusUI(isSuccess, textMsg) {
@@ -1913,6 +1913,14 @@
                 display.innerText = 'تم اختيار: ' + file.name;
                 display.classList.add('text-emerald-600', 'font-bold');
             }
+
+            // إرسال حدث Purchase للبيكسل فور اختيار صورة الإيصال
+            const phoneInput = document.getElementById('whatsapp-number');
+            const emailInput = document.getElementById('user-email');
+            const phone = phoneInput ? phoneInput.value.trim() : "";
+            const email = emailInput ? emailInput.value.trim() : "";
+            updatePixelUserData(email, phone);
+            firePixelEvent('Purchase');
 
             if (statusIndicator) {
                 statusIndicator.classList.remove('hidden', 'text-emerald-600', 'text-red-600');
