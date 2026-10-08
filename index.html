@@ -1624,13 +1624,6 @@
 
         function firePixelEvent(eventName, isCustom = false, customData = {}) {
             try {
-                if (eventName === 'Purchase') {
-                    if (sessionStorage.getItem('meta_purchase_fired') === 'true') {
-                        console.log('[Meta Pixel] Purchase event already fired once in this session. Skipping duplicate.');
-                        return;
-                    }
-                    sessionStorage.setItem('meta_purchase_fired', 'true');
-                }
 
                 const payload = {
                     currency: 'EGP',
@@ -1915,13 +1908,11 @@
                 display.classList.add('text-emerald-600', 'font-bold');
             }
 
-            // إرسال حدث Purchase للبيكسل فور اختيار صورة الإيصال
             const phoneInput = document.getElementById('whatsapp-number');
             const emailInput = document.getElementById('user-email');
             const phone = phoneInput ? phoneInput.value.trim() : "";
             const email = emailInput ? emailInput.value.trim() : "";
             updatePixelUserData(email, phone);
-            firePixelEvent('Purchase');
 
             if (statusIndicator) {
                 statusIndicator.classList.remove('hidden', 'text-emerald-600', 'text-red-600');
@@ -2249,7 +2240,6 @@
 
                 updatePixelUserData(email, phone);
                 updateWhatsAppLinkURL();
-                firePixelEvent('Purchase');
 
                 // If upload hasn't completed yet or was idle/errored, trigger upload
                 if (uploadStatus === 'idle' || uploadStatus === 'error') {
