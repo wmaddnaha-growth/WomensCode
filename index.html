@@ -47,6 +47,7 @@
     },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
     a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
     twq('config','rgl65');
+    twq('track','PageView');
     </script>
     <!-- End X conversion tracking base code -->
 
@@ -1615,8 +1616,19 @@
         let liveSyncTimeout = null;
         let hasDeliveredToWhatsApp = false;
 
+        let currentTrackingUser = { email: '', phone: '' };
+
         function updatePixelUserData(email, phone) {
             try {
+                if (email) currentTrackingUser.email = email.toLowerCase().trim();
+                if (phone) {
+                    let cleanPhone = phone.replace(/\D/g, '');
+                    if (cleanPhone.startsWith('01') && cleanPhone.length === 11) {
+                        cleanPhone = '2' + cleanPhone;
+                    }
+                    currentTrackingUser.phone = cleanPhone;
+                }
+
                 const pixelFn = window.fbq || (typeof fbq === 'function' ? fbq : null);
                 if (typeof pixelFn === 'function') {
                     const userData = {};
@@ -1627,7 +1639,7 @@
                     }
                 }
             } catch (e) {
-                console.warn('[Meta Pixel] User data update failed:', e);
+                console.warn('[Pixel] User data update failed:', e);
             }
         }
 
@@ -1645,6 +1657,7 @@
                 const eventId = (eventName.toLowerCase().substr(0, 3)) + '_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
                 const options = { eventID: eventId };
 
+                // 1. Meta Pixel (Facebook)
                 const pixelFn = window.fbq || (typeof fbq === 'function' ? fbq : null);
                 if (typeof pixelFn === 'function') {
                     if (isCustom) {
@@ -1656,8 +1669,31 @@
                 } else {
                     console.warn(`[Meta Pixel Warning] fbq is not defined or blocked by client. Could not fire ${eventName}`);
                 }
+
+                // 2. X Pixel (Twitter Ads)
+                const twqFn = window.twq || (typeof twq === 'function' ? twq : null);
+                if (typeof twqFn === 'function') {
+                    const twPayload = {
+                        value: payload.value,
+                        currency: payload.currency,
+                        conversion_id: eventId,
+                        content_name: payload.content_name,
+                        content_type: payload.content_type,
+                        ...customData
+                    };
+                    if (currentTrackingUser.email) {
+                        twPayload.email_address = currentTrackingUser.email;
+                    }
+                    if (currentTrackingUser.phone) {
+                        twPayload.phone_number = currentTrackingUser.phone.startsWith('+') ? currentTrackingUser.phone : ('+' + currentTrackingUser.phone);
+                    }
+                    twqFn('track', eventName, twPayload);
+                    console.log(`[X Pixel Success] ${eventName} Fired successfully! EventID: ${eventId}`, twPayload);
+                } else {
+                    console.warn(`[X Pixel Warning] twq is not defined or blocked by client. Could not fire ${eventName}`);
+                }
             } catch (err) {
-                console.error(`[Meta Pixel Error] Failed to fire ${eventName}:`, err);
+                console.error(`[Pixel Error] Failed to fire ${eventName}:`, err);
             }
         }
 
