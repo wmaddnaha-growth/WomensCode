@@ -1673,22 +1673,56 @@
                 // 2. X Pixel (Twitter Ads)
                 const twqFn = window.twq || (typeof twq === 'function' ? twq : null);
                 if (typeof twqFn === 'function') {
-                    const twPayload = {
-                        value: payload.value,
-                        currency: payload.currency,
-                        conversion_id: eventId,
-                        content_name: payload.content_name,
-                        content_type: payload.content_type,
-                        ...customData
-                    };
-                    if (currentTrackingUser.email) {
-                        twPayload.email_address = currentTrackingUser.email;
-                    }
+                    let phoneE164 = null;
                     if (currentTrackingUser.phone) {
-                        twPayload.phone_number = currentTrackingUser.phone.startsWith('+') ? currentTrackingUser.phone : ('+' + currentTrackingUser.phone);
+                        let cleanPhone = currentTrackingUser.phone.replace(/\D/g, '');
+                        if (cleanPhone.startsWith('00')) cleanPhone = cleanPhone.substring(2);
+                        if (cleanPhone.startsWith('01') && cleanPhone.length === 11) {
+                            cleanPhone = '20' + cleanPhone.substring(1);
+                        }
+                        phoneE164 = '+' + cleanPhone;
                     }
-                    twqFn('track', eventName, twPayload);
-                    console.log(`[X Pixel Success] ${eventName} Fired successfully! EventID: ${eventId}`, twPayload);
+
+                    if (eventName === 'Purchase') {
+                        // X conversion tracking event code for Purchase
+                        const purchasePayload = {
+                            value: payload.value,
+                            currency: payload.currency,
+                            contents: [
+                                {
+                                    content_type: payload.content_type || 'product',
+                                    content_id: 'womenscode-manual',
+                                    content_name: payload.content_name || 'مانيوال المايسترو - العرض الكامل',
+                                    content_price: payload.value,
+                                    num_items: 1,
+                                    content_group_id: 'books'
+                                }
+                            ],
+                            conversion_id: (typeof globalOrderId !== 'undefined' && globalOrderId) ? globalOrderId : eventId,
+                            email_address: currentTrackingUser.email || null,
+                            phone_number: phoneE164 || null
+                        };
+                        twqFn('event', 'tw-rgl65-rhogv', purchasePayload);
+                        twqFn('track', 'Purchase', purchasePayload);
+                        console.log(`[X Pixel Success] Purchase (tw-rgl65-rhogv) Fired successfully!`, purchasePayload);
+                    } else {
+                        const twPayload = {
+                            value: payload.value,
+                            currency: payload.currency,
+                            conversion_id: eventId,
+                            content_name: payload.content_name,
+                            content_type: payload.content_type,
+                            ...customData
+                        };
+                        if (currentTrackingUser.email) {
+                            twPayload.email_address = currentTrackingUser.email;
+                        }
+                        if (phoneE164) {
+                            twPayload.phone_number = phoneE164;
+                        }
+                        twqFn('track', eventName, twPayload);
+                        console.log(`[X Pixel Success] ${eventName} Fired successfully! EventID: ${eventId}`, twPayload);
+                    }
                 } else {
                     console.warn(`[X Pixel Warning] twq is not defined or blocked by client. Could not fire ${eventName}`);
                 }
